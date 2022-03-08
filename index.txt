@@ -3,6 +3,8 @@
 |   |--00 - Math
 |   |   |--00 - advanced mathematics
 |   |   |   |--ch1_函数与极限.md
+|   |   |   |--ch2_导数与微分.md
+|   |   |   |--ch3_微分中值定理与导数的应用.md
 |   |   |   |--image
 |   |   |   |   |--ch1_00.png
 |   |   |   |   |--ch1_01.png
@@ -51,6 +53,8 @@
 |   |--00 - Math
 |   |   |--00 - advanced mathematics
 |   |   |   |--ch1_函数与极限.html
+|   |   |   |--ch2_导数与微分.html
+|   |   |   |--ch3_微分中值定理与导数的应用.html
 |   |   |   |--image
 |   |   |   |   |--ch1_00.png
 |   |   |   |   |--ch1_01.png
