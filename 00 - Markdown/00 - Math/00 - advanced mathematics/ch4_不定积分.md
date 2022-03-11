@@ -1,0 +1,130 @@
+# 1. 不定积分的概念与性质
+## 1.1 原函数与不定积分的概念
+> @Definition
+> **定义1.1**   如果在区间$I$上，$\forall x\in I$, 都有$F'(x)=f(x)$或$dF(x)=f(x)dx$，则称$F(x)$为函数$f(x)$在区间$I$上的一个原函数。
+
+> @Theorem 
+> **定理1.1(原函数存在定理)**   如果函数$f(x)$在某一区间内连续，那么在该区间内它的原函数一定存在
+
+> @Theorem
+> **定理1.2**   在区间$I$上，如果函数$F(x)$为函数$f(x)$的一个原函数，则$F(x)+C$是函数$f(x)$在区间$I$上的全体原函数，其中$C$为任意常数。
+
+> @Definition
+> **定义1.2**   称函数$f(x)$在区间$I$上的全体原函数为函数$f(x)$在区间$I$上的不定积分，记作$\int f(x)dx$,即
+> $$
+> \int f(x) = F(x)+C (C为任意常数)
+> $$
+> 其中$F'(x)=f(x)(\forall x\in I)$，记号$\int $为积分好，$f(x)$为积分函数，$f(x)dx$称为积分表达式，而$x$称为积分变量。
+
+## 1.2 不定积分的几何意义
+函数$f(x)$的积分在几何上表示积分曲线族。
+
+
+## 1.3 基本积分公式
+以下是一些常见的积分公式:
+1. $\int k dx =kx +C(k为常数)$
+2. $\int x^{\mu} dx = \frac{1}{\mu +1} x^{\mu+1}+C$
+3. $\int \sin x dx = -\cos x+C$
+4. $\int \cos x dx =\sin x +C$
+5. $\int \frac{1}{\cos^2}dx =\sec^2x = \tan x +C$
+6. $\int \frac{1}{\sin^2x}dx = \csc^2x= -\cot x+C$
+7. $\int \sec x\tan xdx =\sec x +C$
+8. $\int \csc x\cot x dx =-\cot x +C$
+9. $\int a^x dx =\frac{1}{\ln a}a^x +C$
+10. $\int e^x dx = e^x+C$
+11. $\int \frac{1}{x} dx = ln(|x|)+C$
+12. $\int \frac{1}{\sqrt{1-x^2}}dx = \arcsin x+C = -\arccos x+C$
+13. $\int \frac{1}{1+x^2} dx = \tan x +C = -\cot x + C$
+14. $\int\ sh x dx =\ ch x +C$
+15. $\int \ ch x dx =\ sh x +C$
+16. $\int \tan x dx = -\ln|\cos x| +C$
+17. $\int \cot x dx = \ln|\sin x|+C$
+18. $\int  \sec xdx = \ln |\sec x+\tan x| +C$
+19. $\int \csc x dx = \ln |\sec x-\cot x| +C$
+20. $\int \frac{1}{a^2+x^2}dx = \frac{1}{a} \arctan\frac{x}{a} +C$
+21. $\int \frac{1}{x^2-a^2}dx =\frac{1}{2a}\ln|\frac{x-a}{x+a}| +C$
+22. $\int \frac{1}{a^2-x^2} dx = \frac{1}{2a}\ln|\frac{a+x}{a-x}|+C$
+23. $\int \frac{1}{\sqrt{a^2-x^2}}dx = \arcsin \frac{x}{a}+C$
+24. $\int \frac{1}{\sqrt{x^2\pm a^2}} dx = \ln|x+\sqrt{x^2\pm a^2}|+C$
+
+
+## 1.4 不定积分的性质
+> @Property
+> **性质1.1**   设函数$f(x),g(x)$的原函数存在，则对任意的常数$k_1,k_2$,
+> $$
+> \int [k_1f(x)+k_2g(x)]dx = k_1\int f(x)dx+k_2\int g(x)dx
+> $$
+
+# 2. 换元积分法
+## 2.1 第一换元积分法
+> @Theorem
+> **定理2.1**   设函数$f(u)$具有原函数$F(u)$，若$u=\varphi(x)$可导，那么$F([\varphi(x)])$是$F([\varphi(x)])\varphi'(x)$的原函数，即
+> $$
+>\int F([\varphi(x)]) \varphi'(x) dx = F(\varphi(x))+C=[\int f(u)du]|_{u=u\varphi(x)}
+> $$
+
+> @Theorem
+> **定理2.2**   设$x=\psi(x)$是单调的、可导的函数，且$\psi'(t)\neq 0$,又设$f[\psi(x)]\psi'(t)$具有原函数$\Psi(t)$,则$\Psi[\psi^{-1}(t)]$是$f(x)$ 的一个原函数，即
+> $$
+> \int f(x) dx = \Psi[\psi^{-1}(x)]+C=[\int f[\psi(t)]]\psi'(t)dt|_{t=\psi^{-1}(x)}
+> $$
+
+
+# 3.分部积分法
+## 3.1 分部积分公式
+
+> @Theorem
+> **定理3.1**   设函数$u=u(x)$,$v=v(x)$具有连续的导函数，则
+> $$
+> \int udv=uv-\int vdu
+> $$
+> 称为分布积分公式
+
+## 3.2 分布积分常见的几种类型
+1. 多项式函数与指数乘积的不定积分
+   一般选取$u$为多项式函数，$v'$为指数函数
+2. 多项式函数与对数函数的幂次方乘积的不定积分
+   这种积分可表示为$\int P(x)(\ln x)^m$型，其中$P(x)$是多项式，$m$是整数，一般的，选取$u=(\ln x)^m$,$v'=P(x)$
+3. 多项式函数与正、余弦函数乘积的不定积分
+   一般选取$u$为多项式，$v'$为正、余弦函数
+4. 多项式函数与反三角函数乘积的不定积分
+    一般选取$u$为反三角函数
+5. 利用分部积分构造一个方程，解方程得出结果
+6. 利用分部积分构成递推公式
+
+
+# 4. 几种特殊类型函数的不定积分
+## 4.1 有理函数的不定积分
+有理函数是指两个多项式的商所表示的函数，即具有如下形式的函数:
+$$
+\frac{P(x)}{Q(x)}=\frac{a_0x^n+a_1x^{n-1}+\dots a_{n-1}x+a_n}{b_0x^m+b_1x^{m-1}+\dots +b_{m-1}x+b_m}
+$$
+其中，$m,n$皆为自然数。
+- 当$n\ge m$时，该有理函数称为有理假分式
+- 当$n<m$时，该有理函数称为有理真分式
+
+  ​          
+> @Theorem
+> **定理4.1**   
+> 1. 如果$Q(x)=b_0x^m+b_1x^{m-1}+\dots +b_{m-1}x+b_m$为实系数多项式，则$Q(x)$总可以分解为一些实系数的不可约一次因子或二次因子乘积，即
+> $$
+> Q(x) = b_0(x-a)^{\alpha}\dots(x-b)^{\beta}(x^2+px+q)^{\lambda}\dots(x^2+rx+s)^{\mu}
+> $$
+> 其中$\alpha, \beta, \lambda, \mu$ 都是自然数，且二次因子，$x^2+px+q$,$x^2+rx+s$不能再分解为实系数的一次因子的乘积，即$p^2-4q<0,\dots$$r^2-4r<0$成立
+> 2. 如果$Q(x)$的分解式如上式，则有理真分式$\frac{P(x)}{Q(x)}$可以唯一地分解为部分分式之和
+> $$
+> \begin{align*}
+> \frac{P(x)}{Q(x)} = & \frac{A_1}{(x-a)^{\alpha}}+\frac{A_2}{(x-a)^{\alpha-1}}+\dots+\frac{A_\alpha}{x-a}+\dots+ \\
+> & \frac{B_1}{(x-b)^\beta}+ \frac{B_2}{(x-b)^{\beta-1}}+\dots+\frac{B_\beta}{x-b}+\dots+ \\
+>& \frac{M_1x+N_1}{(x^2+px+q)^{\lambda}}+\frac{M_2x+N_2}{(x^2+px+q)^{\lambda-1}}+\dots + \frac{M_\lambda x+N_\lambda}{(x^2+px+q)}+ \\
+> & \frac{R_1x+S_1}{(x^2+rx+s)^{\mu}}+\frac{R_2x+N_2}{(x^2+rx+s)^{\mu-1}}+\dots + \frac{R_\mu x+S_\mu}{(x^2+rx+s)} 
+>  \end{align*}
+> $$
+> 其中$A_i,B_1,M_i,R_i,S_i$都是待定的常数
+
+> @ Theorem
+> **定理4.2**   一切有理函数的原函数都是初等函数
+
+## 4.2 三角函数有理式的不定积分
+三角函数有理式是指由三角函数和常数经过有限次四则运算所构成的函数。对于三角函数的有理式的不定积分，做代换$\tan\frac{x}{2}=u$,总可以将该积分化为有理函数的不定积分，通常将这个代换称为万能代换。
+
