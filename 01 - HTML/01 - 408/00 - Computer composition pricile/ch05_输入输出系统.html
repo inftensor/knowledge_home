@@ -1,0 +1,880 @@
+<!doctype html>
+<html style='font-size:20px !important'>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///C://Users//lenovo//AppData//Roaming//Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}@import '';
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+    --font-sans-serif: 'Ubuntu', 'Source Sans Pro', sans-serif !important;
+    --font-monospace: 'Fira Code', 'Roboto Mono', monospace !important;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-sans-serif);
+    color: #34495e;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 100px;
+}
+
+#write p {
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+}
+
+#write ol li {
+    padding-left: 0.5rem;
+}
+
+#write > ul:first-child,
+#write > ol:first-child {
+    margin-top: 30px;
+}
+
+body > *:first-child {
+    margin-top: 0 !important;
+}
+
+body > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+a {
+    color: #42b983;
+    font-weight: 600;
+    padding: 0 2px;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit !important;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit !important;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit !important;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit !important;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit !important;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit !important;
+}
+
+h2 a,
+h3 a {
+    color: #34495e;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0 15px;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #ddd;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+    margin: 20px 0 7px;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li > ol,
+li > ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h3:first-child,
+body > h4:first-child,
+body > h5:first-child,
+body > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #42b983;
+    padding: 10px 15px;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0 1px;
+}
+
+#write em {
+    padding: 0 5px 0 2px;
+}
+
+#write table thead th {
+    background-color: #f2f2f2;
+}
+
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+#write .md-fences {
+    border: 1px solid #F4F4F4;
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0 !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    font-size: 0.85rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+#write code, tt {
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+}
+
+tt {
+    margin: 0 2px;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* heighlight. */
+#write mark {
+    background-color: #EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+.md-task-list-item > input {
+    margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+    background-color: #f8f8f8;
+}
+
+.md-diagram-panel {
+    position: static !important;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block > .code-tooltip {
+    bottom: .375rem;
+}
+
+#write > h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write > h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image > .md-meta {
+    border-radius: 3px;
+    font-family: var(--font-monospace);
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: var(--font-sans-serif);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>ch05_输入输出系统</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1--概述">1.  概述</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#11-输入输出系统的发展状态">1.1 输入输出系统的发展状态</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#111-早期阶段">1.1.1 早期阶段</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#112--接口模块和dma阶段">1.1.2  接口模块和DMA阶段</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#113-具有通道结构的阶段">1.1.3 具有通道结构的阶段</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#114-具有io处理机的阶段">1.1.4 具有I/O处理机的阶段</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#12-输入输出系统的组成">1.2 输入输出系统的组成</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#13-io设备与主机的联系方式">1.3 I/O设备与主机的联系方式</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#131-io设备编址方式">1.3.1 I/O设备编址方式</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#132-设备寻址">1.3.2 设备寻址</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#133-传送方式">1.3.3 传送方式</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#134-联络方式">1.3.4 联络方式</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#135-io设备与主机的连接方式">1.3.5 I/O设备与主机的连接方式</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#14--io设备与主机信息传送的控制方式">1.4  I/O设备与主机信息传送的控制方式</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#141-程序查询方式">1.4.1 程序查询方式</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#142--程序中断方式">1.4.2  程序中断方式</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#143-dma方式">1.4.3 DMA方式</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2-io设备">2. I/O设备</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#21-概述">2.1 概述</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#22-输入设备">2.2 输入设备</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#221-键盘">2.2.1 键盘</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#222-鼠标">2.2.2 鼠标</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#223-触摸屏">2.2.3 触摸屏</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#224-其他输入设备">2.2.4 其他输入设备</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#23-输出设备">2.3 输出设备</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#231-显示设备">2.3.1 显示设备</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#232-打印设备">2.3.2 打印设备</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#24---其他io设备">2.4   其他I/O设备</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#241-终端设备">2.4.1 终端设备</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#242-ad与da转换器">2.4.2 A/D与D/A转换器</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#243-汉字处理设备">2.4.3 汉字处理设备</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#25-多媒体技术">2.5 多媒体技术</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#251-多媒体的定义">2.5.1 多媒体的定义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#252-多媒体计算机的关键技术">2.5.2 多媒体计算机的关键技术</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3-io-接口">3. I/O 接口</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#31-概述">3.1 概述</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#32-接口的功能和组成">3.2 接口的功能和组成</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#321-总线连接方式的io接口电路">3.2.1 总线连接方式的I/O接口电路</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#322-接口的功能和组成">3.2.2 接口的功能和组成</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#33--接口类型">3.3  接口类型</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4-程序查询方式">4. 程序查询方式</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#41-程序查询流程">4.1 程序查询流程</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#42-程序查询方式的接口电路">4.2 程序查询方式的接口电路</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#5-程序中断方式">5. 程序中断方式</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#51-中断的概念">5.1 中断的概念</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#52-io中断的产生">5.2 I/O中断的产生</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#53-程序中断方式的接口电路">5.3 程序中断方式的接口电路</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#531-中断请求触发器和中断屏蔽触发器">5.3.1 中断请求触发器和中断屏蔽触发器</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#532-排队器">5.3.2 排队器</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#533	中断向量地址形成部件设备编码器">5.3.3<span>	</span>中断向量地址形成部件(设备编码器)</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#534-程序中断方式接口电路的基本组成">5.3.4 程序中断方式接口电路的基本组成</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#54-io中断处理过程">5.4 I/O中断处理过程</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#541-cpu响应中断的条件和时间">5.4.1 CPU响应中断的条件和时间</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#542-io中断处理过程">5.4.2 I/O中断处理过程</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#55-中断服务程序的流程">5.5 中断服务程序的流程</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#6-dma方式">6. DMA方式</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#61-dma-方式的特点">6.1 DMA 方式的特点</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#62-dma接口的功能和组成">6.2 DMA接口的功能和组成</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#621-dma接口的功能">6.2.1 DMA接口的功能</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#622-dma接口基本组成">6.2.2 DMA接口基本组成</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#63-dma的工作过程">6.3 DMA的工作过程</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#631-dma传送过程">6.3.1 DMA传送过程</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#632-dma接口与系统的连接方式">6.3.2 DMA接口与系统的连接方式</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#633-dma小结">6.3.3 DMA小结</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#64-dma接口的类型">6.4 DMA接口的类型</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=' first-line-indent'><h1 id='1--概述'><span>1.  概述</span></h1><h2 id='11-输入输出系统的发展状态'><span>1.1 输入输出系统的发展状态</span></h2><h3 id='111-早期阶段'><span>1.1.1 早期阶段</span></h3><p><span>早期的I/O设备种类较少，I/O设备与主存交换信息必须通过CPU，如下图：</span></p><p><img src="./image/ch05_00_00.svg" style="display:block; margin:0 auto;"></p><p><span>这种I/O设备具有如下特点：</span></p><ul><li><p><span>每个I/O设备都必须配有一套独立的逻辑电路与CPU相连，用来实现I/O设备与主机之间的信息交换，线路十分散乱、复杂</span></p></li><li><p><span>输入输出过程是穿插在CPU执行程序之中进行的，当I/O设备与主机交换信息时，CPU不得不停止各种运算，因此，I/O设备与CPU是按串行方式工作的，极为浪费时间</span></p></li><li><p><span>每个I/O设备的逻辑控制电路与CPU的控制器紧密构成一个不可分割的整体，它们彼此依赖，相互联系，因此，增添、撤减或更换I/O设备非常困难。</span></p><p>&nbsp;</p></li></ul><h3 id='112--接口模块和dma阶段'><span>1.1.2  接口模块和DMA阶段</span></h3><p><span>这个阶段的I/O设备通过接口模块与主机连接，计算机采用了总线结构。</span></p><p><img src="./image/ch05_00_01.svg" style="display:block; margin:0 auto;"></p><p><span>上图中，接口设有数据通路和控制通路，有以下作用：</span></p><ul><li><span>数据经过接口既起到缓冲作用，又可以完成串-并变换</span></li><li><span>控制通路用以传送CPU向I/O设备发出的各种控制命令，或使CPU接受来自I/O设备的反馈信号</span></li><li><span>有些接口能满足中断处理的要求，使I/O设备与CPU可以按并行方式工作。</span></li><li><span>采用接口技术还可以使多台I/O设备分时占用总线，使多台I/O设备相互之间也可以实现并行工作</span></li></ul><p><span>这个阶段实现了CPU和I/O设备并行工作，但是在主机和I/O设备交换信息时，CPU要中断现行程序。</span></p><p><span>接下来出现了直接存储器存取(DMA)技术，特点是I/O设备与主存之间有一条直接数据通路，I/O设备可以与主存交换信息，使CPU在I/O设备与主存交换信息时能继续完成自身的工作。</span></p><h3 id='113-具有通道结构的阶段'><span>1.1.3 具有通道结构的阶段</span></h3><p><span>在大中型计算机中，若仍然采用DMA方式会出现一系列问题：</span></p><ol start='' ><li><span>如果每台I/O设备都配有专用的DMA接口，增加了硬件成本，而且解决多个DMA接口同时访问主存的冲突问题很复杂</span></li><li><span>CPU需要对众多的DMA接口进行管理，同样会占用CPU的工作时间，因频繁进入周期挪用阶段影响效率</span></li></ol><p><span>这时出现了I/O通道的方式来进行数据交换：</span></p><p><img src="./image/ch05_00_02.svg" style="display:block; margin:0 auto;"></p><ul><li><span>通道是用来负责管理I/O设备以及实现主存与I/O设备之间交换信息的部件</span></li><li><span>通道有专用的通道指令，能独立地执行用通道指令所编写的输入输出程序</span></li><li><span>依据CPU的I/O指令进行启动、停止或改变工作状态，从属于CPU的专用处理器</span></li><li><span>依赖通道管理的I/O设备在与主机交换信息时，CPU不直接参与</span></li></ul><h3 id='114-具有io处理机的阶段'><span>1.1.4 具有I/O处理机的阶段</span></h3><p><span>I/O处理机又称为外围处理机，它基本独立于主机工作，既可以完成I/O通道要完成的I/O控制，又可完成码制变换、格式处理、数据块检错、纠错等工作。</span></p><p>&nbsp;</p><h2 id='12-输入输出系统的组成'><span>1.2 输入输出系统的组成</span></h2><p><span>输入输出系统由I/O软件和I/O硬件两部分完成。</span></p><ol start='' ><li><p><span>I/O软件</span></p><p><span>软件部分的主要任务是：</span></p><ul><li><span>将用户编制的程序(或数据)输入主机内</span></li><li><span>将运算结果输送给用户</span></li><li><span>实现输入输出系统与主机工作的协调</span></li></ul><p><span>当使用接口模块时，需要用到机器指令系统中的I/O指令及系统软件管理程序；当使用通道机管理方式时，需要I/O指令、通道指令以及相应的操作系统。</span></p><ul><li><p><span>I/O指令</span></p><p><img src="./image/ch05_00_03.svg" style="display:block; margin:0 auto;"></p><p><span>I/O指令可以和其他机器指令的字长相等，但它还应该能反映CPU与I/O设备交换信息的各种特点，如：对多台I/O设备的选择；对不同设备应该做哪些具体操作等。</span></p><p><span>上图中：</span></p><ul><li><span>操作码：可以作为I/O指令与其他指令的判别；</span></li><li><span>命令码： 体现I/O设备的具体操作</span></li><li><span>设备码： 多台I/O设备的选择码</span></li></ul><p><span>I/O指令一般有如下几种情况：</span></p><ul><li><span>将数据从I/O设备输入主机</span></li><li><span>将数据从主机输入至I/O设备</span></li><li><span>状态测试</span></li><li><span>形成某些操作命令</span></li></ul></li><li><p><span>通道指令</span></p><ul><li><span>一般用以指明参与传送的数据组在主存中的首地址；</span></li><li><span>指明需要传送的字节数或所传送数据组的末地址</span></li><li><span>指明所选设备的设备码及完成各种操作的命令码</span></li><li><span>又称为通道控制字(CCW) ,是通道用于执行I/O操作的指令，由通道从主存中取出并执行。</span></li><li><span>通道程序由通道指令组成，完成某种外围设备与主存之间传送信息的操作</span></li></ul><p>&nbsp;</p><p><span>I/O指令和通道指令的区别：</span></p><p><span>I/O指令是CPU系统指令的一部分，是CPU用来控制输入输出操作的指令,由CPU译码后执行。I/O指令不实现I/O数据传送，主要完成开启、停I/O设备，查询通道和I/O设备的状态及控制通道所做的其他操作。</span></p><p><span>而通道指令时来执行I/O操作，如读、写磁带走带及磁盘找道等。</span></p></li></ul></li><li><p><span>I/O硬件</span></p><p><span>在带有I/O接口系统中，一般包括接口模块及I/O设备两大部分；还包括许多数据传送通路和有关数据，包括控制信号通路及其相应的逻辑电路。</span></p><p><span>下面是具有通道的I/O系统的示意图：</span></p><p><img src="./image/ch05_00_04.svg" style="display:block; margin:0 auto;"></p></li></ol><h2 id='13-io设备与主机的联系方式'><span>1.3 I/O设备与主机的联系方式</span></h2><h3 id='131-io设备编址方式'><span>1.3.1 I/O设备编址方式</span></h3><p><span>通常将I/O设备码看做地址码，对I/O地址码的编址可采用两种编码方式：</span></p><ul><li><p><span>统一编址</span></p><p><span>将I/O地址看做存储器地址的一部分</span></p></li><li><p><span>不统一编址</span></p><p><span>I/O地址和存储器地址是分开的，所有对I/O设备的访问必须有专用的I/O指令。</span></p></li></ul><h3 id='132-设备寻址'><span>1.3.2 设备寻址</span></h3><p><span>当要启动某一设备时，可由I/O指令的设备码字段直接指出要该设备的设备号。</span></p><p><span>通过该接口电路的设备选择电路，即可选中要交换信息的设备。</span></p><h3 id='133-传送方式'><span>1.3.3 传送方式</span></h3><ul><li><span>在一瞬间，</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-16-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-16-TEX-I-1D45B"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">n</script><span> 位信息同时从CPU输出至I/O设备，或由I/O设备输入到CPU，这种传送方式称为并行传送。特点是传送速度快，但要求的数据线多。</span></li><li><span>在一瞬间只传送一位信息，在不同时刻连续逐位传送一串信息，这种传送方式称为串行传送。特点是传送速度慢，但至需要一根数据线和一个地址线。</span></li></ul><h3 id='134-联络方式'><span>1.3.4 联络方式</span></h3><p><span>I/O设备与主机之间必须相互了解彼此当时所处的状态，如：是否可以传送、传送是否已结束等。按I/O设备工作的速度不同，可分为三种联络方式：</span></p><ul><li><p><span>立即响应方式</span></p><p><span>一些工作速度十分慢的I/O设备，当它们与CPU发生联系时，通常都已使其处于某种等待状态，只要CPU的I/O指令一到，它们便立即响应</span></p></li><li><p><span>异步工作采取应答信号联络</span></p><p><span>当I/O设备与主机工作速度不匹配时，通常采用异步工作方式。</span></p><p><img src="./image/ch05_00_05.svg" style="display:block; margin:0 auto;"></p><p><span>其工作如下：</span></p><ol start='' ><li><span>当CPU将数据输出到I/O接口后，接口立即向I/O设备发出一个&quot;Ready&quot;信号</span></li><li><span>I/O设备收到“Ready&quot;信号后，立即从接口中取出数据，接着向接口回发一个”Strobe“ 信号，并让接口转告CPU，接口中的数据已被取走</span></li><li><span>一旦数据被取走，接口便向I/O设备发出&quot;Ready&quot;信号，通知I/O设备，数据已被取走，可继续送数据。</span></li></ol></li><li><p><span>同步工作采取同步时标联络</span></p><p><span>同步工作要求I/O设备与CPU的工作速度完全同步；联络之间还得配有专用电路，用以产生同步时标来控制同步工作。</span></p></li></ul><p>&nbsp;</p><h3 id='135-io设备与主机的连接方式'><span>1.3.5 I/O设备与主机的连接方式</span></h3><p><span>I/O设备与主机的连接方式主要有两种：</span></p><ul><li><p><span>辐射式</span></p><p><img src="./image/ch05_00_06.svg" style="display:block; margin:0 auto;"></p><p><span>要求每台I/O设备都有一套控制线路和一组信号线</span></p></li><li><p><span>总线式</span></p><p><span>通过一组总线(包括地址线、数据线、控制线)，将所有的I/O设备与主机连接。</span></p></li></ul><p>&nbsp;</p><h2 id='14--io设备与主机信息传送的控制方式'><span>1.4  I/O设备与主机信息传送的控制方式</span></h2><h3 id='141-程序查询方式'><span>1.4.1 程序查询方式</span></h3><p><img src="./image/ch05_00_07.svg" style="display:block; margin:0 auto;"></p><p><span>程序查询方式是由CPU通过程序不断查询I/O设备是否已经做好准备，从而控制I/O设备与主机交换信息。这种方式要求I/O接口内设置一个能反映I/O设备是否准备就绪的转台标志。</span></p><h3 id='142--程序中断方式'><span>1.4.2  程序中断方式</span></h3><p><span>CPU在启动I/O设备后，不查询设备是否已准备就绪，继续执行自身程序，只是当I/O设备准备就绪并向CPU发出中断请求后才予以响应。</span></p><p><img src="./image/ch05_00_08.svg" style="display:block; margin:0 auto;"></p><p><span>下面是程序中断方式动I/O设备读取数据块到主存的程序流程:</span></p><p><img src="./image/ch05_00_09.svg" style="display:block; margin:0 auto;"></p><h3 id='143-dma方式'><span>1.4.3 DMA方式</span></h3><p><span>主存与I/O设备之间有一条数据通路，主存与I/O设备交换信息时，无需调用中断服务。</span></p><p><span>若出现DMA和主存同时访问主存时，CPU总是将总线占有所有权让给DMA，通常把DMA的这种占用称为窃取或挪用。</span></p><p>&nbsp;</p><p><span>以上三者的工作效率比较：</span></p><p><img src="./image/ch05_00_10.svg" style="display:block; margin:0 auto;"></p><h1 id='2-io设备'><span>2. I/O设备</span></h1><h2 id='21-概述'><span>2.1 概述</span></h2><p><span>I/O设备大致可以分为三类：</span></p><ol start='' ><li><p><span>人机交互设备</span></p><p><span>实现操作者与计算机之间互相交流信息的设备，能将人体五官可识别的信息转换成机器可以识别的信息。</span></p></li><li><p><span>计算机信息的存储设备</span></p><p><span>系统软件和各种计算机有用的信息，其信息量极大，需要储存保留起来。</span></p></li><li><p><span>机-机通信设备</span></p><p><span>实现一台计算机与其他计算机或与其他系统之间完成通信任务的设备。</span></p></li></ol><h2 id='22-输入设备'><span>2.2 输入设备</span></h2><p><span>输入设备完成输入程序、数据和操作命令等功能。常见的有：</span></p><h3 id='221-键盘'><span>2.2.1 键盘</span></h3><p><span>键盘输入分为以下三个步骤：</span></p><ol start='' ><li><span>按下一个键</span></li><li><span>查出按下的键</span></li><li><span>将此键翻译成ASCII码，由计算机接收</span></li></ol><p><span>按键是由人工操作，确认按下哪个键的方法有：</span></p><ul><li><p><span>编码键盘法</span></p><p><span>由硬件电路形成对应被按键的唯一编码信息。</span></p></li><li><p><span>非编码键盘法</span></p><p><span>采用软件判断是否按下，利用简单的硬件和一套专用键盘编码程序来判断按键的位置。结构简单，反应较慢。</span></p></li></ul><h3 id='222-鼠标'><span>2.2.2 鼠标</span></h3><p><span>常用的鼠标有两种：</span></p><ol start='' ><li><span>机械式的：底座装有一个金属球，球在光滑表面上摩擦使球转动</span></li><li><span>光电式的：需要与一块画满小方格的长方形金属板配合使用。</span></li></ol><p>&nbsp;</p><h3 id='223-触摸屏'><span>2.2.3 触摸屏</span></h3><p><span>触摸屏是一种对物体的接触或靠近能产生反应的定位设备。按原理不同，可分为</span></p><ol start='' ><li><p><span>电阻式</span></p><p><span>当用户触摸塑料薄膜片时，涂有金属到点物质的第一层塑料片与挨着玻璃罩上的第二层塑料片接触，根据其接触电阻的大小求得触摸点所在x和y坐标位置。</span></p></li><li><p><span>电容式</span></p><p><span>在显示屏上加一个内部涂有金属层的玻璃罩。当用户触摸此罩面时，与电场建立了电容耦合，在触摸点产生小电流到屏幕4个角，然后根据4个电流大小计算触摸点的位置。</span></p></li><li><p><span>表面超声波式</span></p><p><span>由一个透明的玻璃罩组成，在罩的x和y轴方向都有一个发射和接收压电转换器和一组反射器条，触摸屏还有一个控制器发送5MHz的出发信号给发射、接收转换器，让它转换完成表面超声波，此时超声波在屏幕表面传播。触摸屏幕时，在触摸位置上的超声波被吸收，使接收信号发生变化，经控制分析和数字转换为x和y的坐标值。</span></p></li></ol><h3 id='224-其他输入设备'><span>2.2.4 其他输入设备</span></h3><p><span>   PASS</span></p><p>&nbsp;</p><h2 id='23-输出设备'><span>2.3 输出设备</span></h2><h3 id='231-显示设备'><span>2.3.1 显示设备</span></h3><ol start='' ><li><p><span>阴极射线管(CRT)显示器</span></p><p><img src="./image/ch05_00_11.svg" style="display:block; margin:0 auto;"></p><p><span>CRT是一个漏斗形的真空器件，由电子枪、荧光屏及偏转装置组成：</span></p><p><span>CRT荧光屏尺寸大小是按屏幕对角线长度表示</span></p><p><span>CRT两个重要指标：</span></p><ul><li><p><span>分辨率</span></p><p><span>显示屏能表示的像素点数</span></p></li><li><p><span>灰度等级</span></p><p><span>显示像素点相对亮暗的级差，在彩色显示其中还表现色彩的差别</span></p></li></ul><p><span>为了不断地刷新，必须把瞬时的图像不存在存储器中，这种存储器称为刷新存储器，又称为帧存储器或视频存储器(VRAM)</span></p><p><span>计算机的显示器大多采用光栅扫描方式，即电子束在荧光屏上按某种轨迹运动，光栅扫描是从上至下顺序扫描，可分为顺序扫描和隔行扫描两种。</span></p></li><li><p><span>字符显示器</span></p><p><span>下图是字符显示器的原理：</span></p><p><img src="./image/ch05_01_00.svg" style="display:block; margin:0 auto;"></p><p><span>其中:</span></p><ul><li><p><span>显示存储器(VRAM)</span></p><p><span>存放欲显示的字符的ASCII码，其容量与显示屏能显示的字符个数有关。每个字符所在的存储单元的地址与字符所在荧光屏上的位置一一对应（从左到右，从上到下）</span></p></li><li><p><span>字符发生器</span></p><p><span>将每个ASCII字符码转变成一组光点矩阵信息，实质是一个ROM。</span></p></li><li><p><span>CRT控制器</span></p><p><span>CRT控制器通常都做成专用芯片，可以接收来自CPU的数据和控制信号，并给出访问显示存储器的地址和访问字符发生器的光栅地址，还能给出CRT所需的水平同步和垂直同步信号等。</span></p><p><span>芯片中需要配置：</span></p><ul><li><span>点计数器：记录每个字的横向光点</span></li><li><span>字计数器：反映了光栅扫描的水平方向</span></li><li><span>排计数器：反映了光栅扫描的垂直方向</span></li></ul></li></ul></li><li><p><span>图形显示器</span></p><p><span>利用CRT显示器产生图形有两种方法：</span></p></li></ol><ul><li><p><span>随机扫描</span></p><p><span>任何图形的线条都被认为是由许多微小的首位连接的线段来逼近</span></p></li><li><p><span>光栅扫描</span></p><p><img src="./image/ch05_01_01.svg" style="display:block; margin:0 auto;"></p><p><span>把对应于屏幕上的每个像素信息都存储在刷新存储器中。光栅扫描时，读出这些像素来调制CRT的灰度，以便控制屏幕上像素的亮度。</span></p></li></ul><ol start='4' ><li><p><span>图像显示器</span></p><p><span>图形显示器vs图像显示器</span></p><p><span>图形显示器是由计算机用一定的算法形成的点、线、面、阴影等，来自主观世界，故又称主观图像或计算机图像。</span></p><p><span>图像显示器所显示的图像通常来自客观世界，故又称客观世界；以点阵形式显示出来。</span></p><p><span>图像显示器提供的功能;</span></p><ul><li><span>灰度变换：使原始图像的对比度增强或改变</span></li><li><span>窗口技术: 在图像存储器中，每个像素有2048级灰度，而人的肉眼只能分辨到40级。从2048级中开一个小窗口，并把这个窗口范围内的灰度级取出，使之变为64级显示灰度，就可以使原来被掩盖的灰度细节充分显示出来</span></li><li><span>真色彩和伪色彩：真色彩是真实图像色彩显示；伪色彩处理是一种图像增加级数。</span></li></ul><p><span>简单的图像显示器只显示由计算机送来的数字图像，图像处理操作在计算机中完成，显示器不做任何处理，其原理如下：</span></p></li></ol><p><img src="./image/ch05_01_02.svg" style="display:block; margin:0 auto;"></p><h3 id='232-打印设备'><span>2.3.2 打印设备</span></h3><ol start='' ><li><p><span>点阵式打印机</span></p><p><span>点阵式打印机结构简单、体积小、重量轻、价格低、字符种类不受限制、较容易实现汉字打印。</span></p><p><span>原理是由打印针印出</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="6.11ex" height="1.136ex" role="img" focusable="false" viewBox="0 -491 2700.4 502" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-17-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-17-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path id="MJX-17-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-17-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(822.2,0)"><use data-c="D7" xlink:href="#MJX-17-TEX-N-D7"></use></g><g data-mml-node="mi" transform="translate(1822.4,0)"><use data-c="1D45A" xlink:href="#MJX-17-TEX-I-1D45A"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>×</mo><mi>m</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">n\times m</script><span> 个点阵来组成字符或图形。</span></p><p><span>下图是针式打印机的结构框图</span></p><p><img src="./image/ch05_01_03.svg" style="display:block; margin:0 auto;"></p><p><span>以下是针式打印机的组成：</span></p><p><img src="./image/ch05_01_04.svg" style="display:block; margin:0 auto;"></p><p><span>其中：</span></p><ul><li><span>打印机被CPU启动后，在接收代码时序器控制下，功能码判断电路开始接收从主机送来的打印字符的字符代码(ASCII码)</span></li><li><span>判断该字符类型</span></li><li><span>如果是打印字符码，则送至缓冲存储器，直到把缓冲存储器装满为止</span></li><li><span>如果是控制功能，则打印控制器停止接收代码并转入打印状态。</span></li><li><span>打印时，启动打印时序器，在它的控制下，从缓冲存储器逐个读出打印字符码，再以该字符码作为字符发生器ROM的地址码，从中选出对应的字符点阵信息</span></li><li><span>在列同步脉冲计数器控制下，将一列列读出的字符点阵信息送至打印驱动电路，驱动电磁带动相应的钢针进行打印。</span></li></ul></li><li><p><span>激光打印机</span></p><p><span>激光打印采用了激光技术和照相技术，是非打击式硬拷贝输出设备，是逐页输出的，其组成如下：</span></p><p><img src="./image/ch05_01_05.svg" style="display:block; margin:0 auto;"></p><ul><li><span>接口控制器：接收由计算机输出的二进制字符编码及其他控制信号</span></li><li><span>字形发生器：将二进制字符编码转成字符点阵脉冲信号</span></li><li><span>激光扫描系统： 光源是激光器，受字符点阵脉冲信号的控制，能输出很细的激光束，该激光束对做圆周运动感光鼓（硒鼓）进行轴向扫描。</span></li></ul></li><li><p><span>喷墨打印机</span></p><p><span>喷墨打印机是串行非击打式打印机，印字原理是将墨水喷射到普通打印纸上。</span></p><p><span>下面是喷墨打印机的原理：</span></p><p><img src="./image/ch05_01_06.svg" style="display:block; margin:0 auto;"></p><p><span>其中：</span></p><ul><li><span>喷墨头后部的电压陶瓷受震荡脉冲激励，使喷墨头喷出具有一定速度的一串不连续、不带电的墨水滴</span></li><li><span>墨水滴通过充电电极时被充上电荷，电荷量有字符发生器控制</span></li><li><span>字符发生器将字符编码转换成字符点阵信息</span></li><li><span>电压越高、所充电荷越多，偏移的距离越大；如果不需要喷点，则相应墨滴不充电，不发生偏转，进行回收。</span></li></ul></li></ol><h2 id='24---其他io设备'><span>2.4   其他I/O设备</span></h2><p><span>计算机的I/O设备中，有一类既是输入设备，又是输出设备。</span></p><h4 id='241-终端设备'><span>2.4.1 终端设备</span></h4><p><span>由显示器和键盘组成的一套独立完整的I/O设备，可以通过标准接口接到远离主机的地方使用。</span></p><h3 id='242-ad与da转换器'><span>2.4.2 A/D与D/A转换器</span></h3><p><span>A/D转换器是模拟/数字转换器，将模拟量转换成数字量，是计算机的输入设备。</span></p><p><span>D/A转换器是数字/模拟转换器，将计算机输出的数字转换成控制所需的模拟量，以便控制被控对象或直接输出模拟信号。</span></p><h3 id='243-汉字处理设备'><span>2.4.3 汉字处理设备</span></h3><p><span>计算机进行汉字处理时，必须将汉字代码化，即对汉字进行编码。汉字编码可分为：</span></p><ul><li><p><span>输入码</span></p><p><span>解决汉字的输入和识别问题</span></p></li><li><p><span>内码</span></p><p><span>由输入码转换而成，只有内码才能在计算机内进行加工处理</span></p></li><li><p><span>字形码</span></p><p><span>能显示或打印输出</span></p></li></ul><p><span>汉字的处理包括：</span></p><ol start='' ><li><p><span>汉字的输入</span></p><p><span>当采用西文标准键盘输入汉字时，必须对汉字进行编码，以便用字母、数字串替代汉字输入。汉字编码方法主要有：</span></p><ul><li><span>数字编码：用数字串代表一个汉字的输入，常用的是国标区位码，也有的用电报码。</span></li><li><span>拼音码：以汉语读音为基础，但重码率很高</span></li><li><span>字形编码：以汉字形状确定，常用的是五笔。</span></li></ul></li><li><p><span>汉字的存储</span></p><p><span>汉字的存储包括汉字内码存储和字形码的存储。</span></p><ul><li><span>汉字内码：是汉字信息在机内存储、交换、检索等过程中所使用的机内码，通常用两个字节表示。英文字符的机内代码是7位ACII码，字节最高位为“0”，而汉字内的两个字节最高位均为&quot;1&quot;；有些机器把字节的最高位用作奇偶校验位，这时汉字内码需用到3个字节表示。</span></li><li><span>字形码：用点阵表示汉字字形的代码，也成字模码，它是汉字的输出形式。</span></li></ul></li><li><p><span>汉字的输出</span></p><p><span>汉字输出有打印输出和显示输出两种形式。</span></p><p><span>汉字显示可以用通用显示器，在主机内由汉字显示控制板(简称汉卡)或通用的图形显示板形成点阵码，再将点阵码送至显示设备。</span></p></li></ol><p>&nbsp;</p><h2 id='25-多媒体技术'><span>2.5 多媒体技术</span></h2><h3 id='251-多媒体的定义'><span>2.5.1 多媒体的定义</span></h3><p><span>多媒体的核心是媒体，所谓媒体，是指信息传递和存储的最基本技术和手段。</span></p><p><span>研究多媒体计算机技术，就是要强调计算机与声音、活动图像和文字相结合。</span></p><p>&nbsp;</p><h3 id='252-多媒体计算机的关键技术'><span>2.5.2 多媒体计算机的关键技术</span></h3><ol start='' ><li><p><span>视频和音频数据的压缩和解压缩技术</span></p><p><span>因为图像、音频等数量很大，假设计算机总线上的传输速率有限，必须对信息进行压缩和解压缩。</span></p><p><span>图像压缩：是指图像从像素存储的方式进过图形变换、量化和高效编码等处理，转换成特殊形式的编码，从而大大降低计算机所需存储和实时传输的数据量。</span></p></li><li><p><span>多媒体专用芯片</span></p><p><span>一般有两种类型：固定功能和可编程的</span></p></li><li><p><span>大容量存储器</span></p></li><li><p><span>适用于多媒体技术的软件</span></p><p><span>以下是多媒体系统的层次结构：</span></p><figure><table><thead><tr><th style='text-align:center;' ><span>应用系统</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>创作系统</span></td></tr><tr><td style='text-align:center;' ><span>多媒体核心系统</span></td></tr><tr><td style='text-align:center;' ><span>多媒体输入输出控制及接口</span></td></tr><tr><td style='text-align:center;' ><span>多媒实时压缩与解压缩</span></td></tr><tr><td style='text-align:center;' ><span>计算机硬件</span></td></tr></tbody></table></figure><p>&nbsp;</p></li></ol><h1 id='3-io-接口'><span>3. I/O 接口</span></h1><h2 id='31-概述'><span>3.1 概述</span></h2><p><span>I/O接口通常是指主机与I/O设备之间设置的一个硬件电路及其相对应的软件控制。主机与I/O设备之间设置接口的理由如下：</span></p><ol start='' ><li><span>一台机器通常配有多台I/O设备，它们各自有其设备(地址)，通过接口可实现I/O设备的选择</span></li><li><span>I/O设备种类繁多，速度不一，与CPU速度相差可能很大，通过接口可实现数据缓冲，达到速度匹配</span></li><li><span>有些I/O设备可能串行传送数据，而CPU一般为并行传送，通过接口可实现数据串-并格式的转换</span></li><li><span>I/O设备的输入输出电平可能与CPU的输入输出电平不同，通过接口实现电平转换</span></li><li><span>CPU启动I/O设备工作，要向I/O设备发出各种控制信号，通过接口可以传送控制命令</span></li><li><span>I/O设备需将其工作状态(“忙&quot;、”就绪“、”错误“、”等待“)及时向CPU报告，通过接口可以监视设备的工作状态，并可以保存状态信息</span></li></ol><p><span>这里注意一下接口和端口区别：</span></p><ul><li><p><span>端口</span></p><p><span>接口电路中的一些寄存器，这些寄存器分别用来存放数据信息、控制信息和状态信息，相应的端口称为数据端口、控制端口、状态端口。</span></p></li><li><p><span>接口</span></p><p><span>若干个端口加上相应的控制逻辑才能组成接口。</span></p></li></ul><h2 id='32-接口的功能和组成'><span>3.2 接口的功能和组成</span></h2><h3 id='321-总线连接方式的io接口电路'><span>3.2.1 总线连接方式的I/O接口电路</span></h3><p><span>下图为总线结构的计算机，每台I/O设备通过I/O接口挂到系统总线：</span></p><p><img src="./image/ch05_02_00.svg" style="display:block; margin:0 auto;"></p><p><span>上图中：</span></p><ol start='' ><li><p><span>数据线 </span></p><p><span>数据线是I/O设备与主机之间数据代码的传送线，其根数一般等于存储字长的位数或字符的位数，它通常是双向的，也可以是单向的。</span></p></li><li><p><span>设备选择线</span></p><p><span>设备选择线是用来传送设备码的，它的根数取决于I/O指令中设备码的位数。如果把设备码看做是地址号，那么设备选择线又可称为地址线。</span></p><p><span>设备选择线可以有一组，也可以有两组，一组用于主机向I/O设备发送设备码，另一组用于I/O设备向主机发送设备码。</span></p></li><li><p><span>命令线</span></p><p><span>用以传输CPU向设备发出的各种命令信号，它是一组单向总线，其根数与命令信号多少有关。</span></p></li><li><p><span>状态线</span></p><p><span>将I/O设备的状态向主机报告的信号线。也是一组单总线。</span></p><p>&nbsp;</p></li></ol><h3 id='322-接口的功能和组成'><span>3.2.2 接口的功能和组成</span></h3><ol start='' ><li><p><span>选址功能</span></p><p>&nbsp;</p><p><span>当设备选择线上的设备码与接口的设备码相同时，应发出选中信号SEL，这种功能通过接口内的设备选择电路来实现。</span></p><p><img src="./image/ch05_02_01.svg" style="display:block; margin:0 auto;"></p><p><span>上图所示的两个设备选择电路，这两个电路的具体线路可以不同，它们能识别处自身的设备码，一旦某接口设备选择电路有输出时，它便可控制这个设备通过命令线、状态线和数据线与主机交换信息。</span></p></li><li><p><span>传送命令的功能</span></p><p><img src="./image/ch05_02_02.svg" style="display:block; margin:0 auto;"></p><p><span>通常在I/O接口中设有存放命令的命令寄存器以及命令译码器。</span></p><p><span>命令寄存器用来存放I/O指令中的命令码，它受设备选中信号控制。命令线和所有接口电路的命令寄存器相连，只有被选中设备的SEL信号有效，命令寄存器才可接收命令线上的命令码。</span></p></li><li><p><span>传送数据的功能</span></p><p><span>数据必须通过接口才能实现主机与I/O设备之间的传送，要求接口中有数据通路，完成数据传送。同时，数据通路具有缓冲功能，能将数据暂存在接口内，接口中通常设有数据缓冲寄存器(DBR),与I/O总线的数据线相连。</span></p></li><li><p><span>反映I/O设备工作状态的功能</span></p><p><span>为了使CPU能及时了解各I/O设备的工作状态，接口内设置一些反映设备工作状态的触发器。</span></p><p><span>例如：完成触发器D和工作触发器来标志设备所处的状态：</span></p><ul><li><span>当D=0,B=0时，表示I/O设备处于暂停状态</span></li><li><span>当D=1,B=0时，表示I/O设备处于准备就绪</span></li><li><span>当D=0,B=1时，表示I/O设备处于准备状态</span></li></ul><p><span>由于采用中断技术，接口电路中还设有中断请求触发器INTR，当其为&quot;1&quot;时，表示该I/O设备向CPU发出中断请求。接口内还有屏蔽触发器MASK，与中断触发器配合使用，完成设备的屏蔽功能。</span></p><p><span>以下是I/O接口的基本组成：</span></p><p><img src="./image/ch05_02_03.svg" style="display:block; margin:0 auto;"></p></li></ol><h2 id='33--接口类型'><span>3.3  接口类型</span></h2><p><span>接口类型按不同分类，有：</span></p><ol start='' ><li><span>按数据传送方式：并行接口和串行接口</span></li><li><span>按功能选择的灵活性分类：可编程接口和不可编程接口</span></li><li><span>通用性分类：通用接口和专用接口</span></li><li><span>按数据传送的控制方式：程序型接口和DMA接口。</span></li></ol><h1 id='4-程序查询方式'><span>4. 程序查询方式</span></h1><h2 id='41-程序查询流程'><span>4.1 程序查询流程</span></h2><p><span>单个I/O设备的查询流程如下：</span></p><p><img src="./image/ch05_03_00.svg" style="display:block; margin:0 auto;"></p><p><span>对于多个I/O设备，需要按各个I/O设备在系统中的优先几倍进行逐级查询，设备的优先顺序按1至N降序排序，为了正确完成这种查询，需要执行：</span></p><p><img src="./image/ch05_03_01.svg" style="display:block; margin:0 auto;"></p><ol start='' ><li><span>测试指令：查询I/O设备是否准备就绪</span></li><li><span>传送指令：当I/O设备已经准备就绪时，执行传送指令</span></li><li><span>转移指令： 若I/O设备未准备就绪，执行转移指令，转至测试指令，继续测试I/O设备的状态</span></li></ol><p><span>以下是单个I/O设备程序查询方式的程序流程：</span></p><p><img src="./image/ch05_03_02.svg" style="display:block; margin:0 auto;"></p><p><span>上图中：</span></p><ol start='' ><li><p><span>由于这种方式传送数据时要占用CPU的寄存器，故首先需要将寄存器原内容保护起来。</span></p></li><li><p><span>由于传送往往是一批数据，因此需要先设置I/O设备与主机交换数据的计数值</span></p></li><li><p><span>设置欲传送数据在主存缓冲区的首地址</span></p></li><li><p><span>CPU启动I/O设备</span></p></li><li><p><span>将I/O接口中的设备状态标志取至CPU并测试I/O设备是否准备就绪。</span></p><ul><li><span>如准备就绪，接着可实现传送。对于输入而言准备就绪意味着接口电路中的数据缓冲寄存器已装满想要传送的数据，称为输入缓冲满；对于输而言，准备就绪意味着接口电路中的数据已被设备取走，称为输出缓冲空，这样CPU可再次将数据送到接口。</span></li><li><span>为准备就绪，等待，直到准备就绪为止。</span></li></ul></li><li><p><span>CPU执行I/O指令，或从I/O接口的数据缓冲寄存器中读出一个数据，或把一个数据写入I/O接口中的数据缓冲寄存器内，同时将接口中的标志位复位</span></p></li><li><p><span>修改主存地址</span></p></li><li><p><span>修改计数值，若原设置计数值为原码，则以此减1；若为补码，则加1</span></p></li><li><p><span>判断计数值。如果计数值不为0，重新启动外设继续传送；若为0，则表示一批数据已经传送完成</span></p></li><li><p><span>结束I/O传送，继续执行现行程序。</span></p></li></ol><h2 id='42-程序查询方式的接口电路'><span>4.2 程序查询方式的接口电路</span></h2><p><img src="./image/ch05_03_03.svg" style="display:block; margin:0 auto;"></p><p><span>上图中，以输入设备为例，该接口的工作过程如下：</span></p><ol start='' ><li><span>当CPU通过I/O指令启动输入设备时，指令的设备码字段通过地址线送至设备选择电路</span></li><li><span>若该接口的设备码与地址线上的代码吻合，其输出SEL有效</span></li><li><span>I/O指令的启动经过&quot;与非&quot;门将工作触发器B置&quot;1&quot;,将完成触发器D置“0”</span></li><li><span>由B触发器启动设备工作</span></li><li><span>输入设备将数据送至数据缓冲寄存器</span></li><li><span>由设备发出设备工作结束信号，将D置&quot;1&quot;，B置&quot;0&quot;,表示外设准备就绪</span></li><li><span>D触发器以“准备就绪”状态通知CPU，表示&quot;数据缓冲满&quot;</span></li><li><span>CPU执行输入指令，将数据缓冲寄存器中的数据送至CPU的通用寄存器，在存入主存相关单元。</span></li></ol><p>&nbsp;</p><h1 id='5-程序中断方式'><span>5. 程序中断方式</span></h1><h2 id='51-中断的概念'><span>5.1 中断的概念</span></h2><p><span>当出现异常情况或特殊请求时，计算机停止现行程序的运行，转向对这些异常情况或特殊请求的处理，处理结束后在返回到现行程序的间断处，继续执行原程序。</span></p><h2 id='52-io中断的产生'><span>5.2 I/O中断的产生</span></h2><p><span>在I/O设备与主机交换信息时，由于设备本身极点特性的影响，工作速度较低，与CPU无法匹配。如果在设备准备的同时，CPU不做无谓等待，而继续执行程序，当I/O设备准备就绪向CPU提出请求后，再暂时中断CPU现行程序转入I/O服务程序。</span></p><p>&nbsp;</p><h2 id='53-程序中断方式的接口电路'><span>5.3 程序中断方式的接口电路</span></h2><h3 id='531-中断请求触发器和中断屏蔽触发器'><span>5.3.1 中断请求触发器和中断屏蔽触发器</span></h3><p><span>把凡能向CPU提出中断请求的各种因素统称为中断源。在任何瞬间，CPU只能接收一个中断源请求。</span></p><p><span>接口电路中的完成触发器D、中断请求触发器INTR、中断屏蔽触发器MASK和中断查询信号的关系如下：</span></p><p><span>仅当设备准备就绪(D=1),且该设备未被屏蔽(MASK=0)时，CPU的中断查询信号可将中断请求触发器置“1”（INTR=1）</span></p><p><img src="./image/ch05_04_00.svg" style="display:block; margin:0 auto;"></p><h3 id='532-排队器'><span>5.3.2 排队器</span></h3><p><span>当多个中断源同时向CPU提出请求时，CPU只能按中断源的不同性质对其排队。就I/O中断而言，速度越高的I/O设备，优先级越高。</span></p><p><span>设备优先权的处理可以采用硬件方法，也可以采用软件方法。</span></p><p><span>  硬件排队器的实现方式有很多，既可以在CPU内部设置一个统一的排队器，对所有中断源进行排队，也可以在接口电路内分别设置各个设备的排队器，又称为链式排队器。</span></p><p><span>下图是链式排队器的组成：</span></p><p><img src="./image/ch05_04_01.svg" style="display:block; margin:0 auto;"></p><p><span>当各中断源均无中断请求时，各个</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.199ex" height="2.619ex" role="img" focusable="false" viewBox="0 -1000 3182 1157.8" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.357ex;"><defs><path id="MJX-18-TEX-I-1D43C" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path id="MJX-18-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-18-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-18-TEX-I-1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"></path><path id="MJX-18-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-18-TEX-S4-2013" d="M0 248V285H499V248H0Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mover"><g data-mml-node="mrow"><g data-mml-node="mi"><use data-c="1D43C" xlink:href="#MJX-18-TEX-I-1D43C"></use></g><g data-mml-node="mi" transform="translate(504,0)"><use data-c="1D441" xlink:href="#MJX-18-TEX-I-1D441"></use></g><g data-mml-node="mi" transform="translate(1392,0)"><use data-c="1D447" xlink:href="#MJX-18-TEX-I-1D447"></use></g><g data-mml-node="msub" transform="translate(2096,0)"><g data-mml-node="mi"><use data-c="1D445" xlink:href="#MJX-18-TEX-I-1D445"></use></g><g data-mml-node="mi" transform="translate(792,-150) scale(0.707)"><use data-c="1D456" xlink:href="#MJX-18-TEX-I-1D456"></use></g></g></g><g data-mml-node="mo" transform="translate(0,615)"><svg width="3182" height="237" x="0" y="148" viewBox="795.5 148 3182 237"><use data-c="2013" xlink:href="#MJX-18-TEX-S4-2013" transform="scale(9.546,1)"></use></svg></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover><mrow><mi>I</mi><mi>N</mi><mi>T</mi><msub><mi>R</mi><mi>i</mi></msub></mrow><mo accent="true">―</mo></mover></math></mjx-assistive-mml></mjx-container><script type="math/tex">\overline{INTR_i}</script><span> 为高电平，其中</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.198ex" height="2.687ex" role="img" focusable="false" viewBox="0 -899.7 3181.6 1187.6" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.651ex;"><defs><path id="MJX-19-TEX-I-1D43C" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path id="MJX-19-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-19-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-19-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path><path id="MJX-19-TEX-V-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path id="MJX-19-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D43C" xlink:href="#MJX-19-TEX-I-1D43C"></use></g><g data-mml-node="mi" transform="translate(504,0)"><use data-c="1D441" xlink:href="#MJX-19-TEX-I-1D441"></use></g><g data-mml-node="mi" transform="translate(1392,0)"><use data-c="1D447" xlink:href="#MJX-19-TEX-I-1D447"></use></g><g data-mml-node="msubsup" transform="translate(2096,0)"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-19-TEX-I-1D443"></use></g><g data-mml-node="TeXAtom" transform="translate(839.5,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="msup"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(33,363) scale(0.707)"><use data-c="2032" xlink:href="#MJX-19-TEX-V-2032"></use></g></g></g><g data-mml-node="mn" transform="translate(675,-287.9) scale(0.707)"><use data-c="31" xlink:href="#MJX-19-TEX-N-31"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi><mi>N</mi><mi>T</mi><msubsup><mi>P</mi><mn>1</mn><mrow data-mjx-texclass="ORD"><msup><mi></mi><mo data-mjx-alternate="1">′</mo></msup></mrow></msubsup></math></mjx-assistive-mml></mjx-container><script type="math/tex">INTP_1^{'}</script><span>、</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.198ex" height="2.687ex" role="img" focusable="false" viewBox="0 -899.7 3181.6 1187.6" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.651ex;"><defs><path id="MJX-20-TEX-I-1D43C" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path id="MJX-20-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-20-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-20-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path><path id="MJX-20-TEX-V-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path id="MJX-20-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D43C" xlink:href="#MJX-20-TEX-I-1D43C"></use></g><g data-mml-node="mi" transform="translate(504,0)"><use data-c="1D441" xlink:href="#MJX-20-TEX-I-1D441"></use></g><g data-mml-node="mi" transform="translate(1392,0)"><use data-c="1D447" xlink:href="#MJX-20-TEX-I-1D447"></use></g><g data-mml-node="msubsup" transform="translate(2096,0)"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-20-TEX-I-1D443"></use></g><g data-mml-node="TeXAtom" transform="translate(839.5,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="msup"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(33,363) scale(0.707)"><use data-c="2032" xlink:href="#MJX-20-TEX-V-2032"></use></g></g></g><g data-mml-node="mn" transform="translate(675,-287.9) scale(0.707)"><use data-c="32" xlink:href="#MJX-20-TEX-N-32"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi><mi>N</mi><mi>T</mi><msubsup><mi>P</mi><mn>2</mn><mrow data-mjx-texclass="ORD"><msup><mi></mi><mo data-mjx-alternate="1">′</mo></msup></mrow></msubsup></math></mjx-assistive-mml></mjx-container><script type="math/tex">INTP_2^{'}</script><span>、</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.652ex" height="0.271ex" role="img" focusable="false" viewBox="0 -120 1172 120" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-21-TEX-N-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2026" xlink:href="#MJX-21-TEX-N-2026"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>…</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\dots</script><span> 均为高电平。一旦某个中断源提出中断请求时，就迫使比其优先级低的中断源</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.198ex" height="2.697ex" role="img" focusable="false" viewBox="0 -899.7 3181.6 1191.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.661ex;"><defs><path id="MJX-22-TEX-I-1D43C" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path id="MJX-22-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-22-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-22-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path><path id="MJX-22-TEX-V-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path id="MJX-22-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D43C" xlink:href="#MJX-22-TEX-I-1D43C"></use></g><g data-mml-node="mi" transform="translate(504,0)"><use data-c="1D441" xlink:href="#MJX-22-TEX-I-1D441"></use></g><g data-mml-node="mi" transform="translate(1392,0)"><use data-c="1D447" xlink:href="#MJX-22-TEX-I-1D447"></use></g><g data-mml-node="msubsup" transform="translate(2096,0)"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-22-TEX-I-1D443"></use></g><g data-mml-node="TeXAtom" transform="translate(839.5,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="msup"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(33,363) scale(0.707)"><use data-c="2032" xlink:href="#MJX-22-TEX-V-2032"></use></g></g></g><g data-mml-node="mi" transform="translate(675,-284.4) scale(0.707)"><use data-c="1D456" xlink:href="#MJX-22-TEX-I-1D456"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi><mi>N</mi><mi>T</mi><msubsup><mi>P</mi><mi>i</mi><mrow data-mjx-texclass="ORD"><msup><mi></mi><mo data-mjx-alternate="1">′</mo></msup></mrow></msubsup></math></mjx-assistive-mml></mjx-container><script type="math/tex">INTP_i^{'}</script><span>变为低电平，封锁其发出中断请求。</span></p><h3 id='533\t中断向量地址形成部件设备编码器'><span>5.3.3</span><span>	</span><span>中断向量地址形成部件(设备编码器)</span></h3><p><span>通过向量地址来寻找设备的中断服务程序入口地址，而且向量地址由硬件电路产生。</span></p><p><span>中断向量地址形成部件的输入是来自排队器的输出</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.182ex" height="1.885ex" role="img" focusable="false" viewBox="0 -683 3174.6 833" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.339ex;"><defs><path id="MJX-23-TEX-I-1D43C" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path id="MJX-23-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-23-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-23-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path><path id="MJX-23-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D43C" xlink:href="#MJX-23-TEX-I-1D43C"></use></g><g data-mml-node="mi" transform="translate(504,0)"><use data-c="1D441" xlink:href="#MJX-23-TEX-I-1D441"></use></g><g data-mml-node="mi" transform="translate(1392,0)"><use data-c="1D447" xlink:href="#MJX-23-TEX-I-1D447"></use></g><g data-mml-node="msub" transform="translate(2096,0)"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-23-TEX-I-1D443"></use></g><g data-mml-node="mn" transform="translate(675,-150) scale(0.707)"><use data-c="31" xlink:href="#MJX-23-TEX-N-31"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi><mi>N</mi><mi>T</mi><msub><mi>P</mi><mn>1</mn></msub></math></mjx-assistive-mml></mjx-container><script type="math/tex">INTP_1</script><span>,</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.182ex" height="1.885ex" role="img" focusable="false" viewBox="0 -683 3174.6 833" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.339ex;"><defs><path id="MJX-24-TEX-I-1D43C" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path id="MJX-24-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-24-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-24-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path><path id="MJX-24-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D43C" xlink:href="#MJX-24-TEX-I-1D43C"></use></g><g data-mml-node="mi" transform="translate(504,0)"><use data-c="1D441" xlink:href="#MJX-24-TEX-I-1D441"></use></g><g data-mml-node="mi" transform="translate(1392,0)"><use data-c="1D447" xlink:href="#MJX-24-TEX-I-1D447"></use></g><g data-mml-node="msub" transform="translate(2096,0)"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-24-TEX-I-1D443"></use></g><g data-mml-node="mn" transform="translate(675,-150) scale(0.707)"><use data-c="32" xlink:href="#MJX-24-TEX-N-32"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi><mi>N</mi><mi>T</mi><msub><mi>P</mi><mn>2</mn></msub></math></mjx-assistive-mml></mjx-container><script type="math/tex">INTP_2</script><span>,</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.652ex" height="0.271ex" role="img" focusable="false" viewBox="0 -120 1172 120" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-25-TEX-N-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2026" xlink:href="#MJX-25-TEX-N-2026"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>…</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\dots </script><span>, </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.342ex" height="1.902ex" role="img" focusable="false" viewBox="0 -683 3245.3 840.8" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.357ex;"><defs><path id="MJX-26-TEX-I-1D43C" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path id="MJX-26-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-26-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-26-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path><path id="MJX-26-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D43C" xlink:href="#MJX-26-TEX-I-1D43C"></use></g><g data-mml-node="mi" transform="translate(504,0)"><use data-c="1D441" xlink:href="#MJX-26-TEX-I-1D441"></use></g><g data-mml-node="mi" transform="translate(1392,0)"><use data-c="1D447" xlink:href="#MJX-26-TEX-I-1D447"></use></g><g data-mml-node="msub" transform="translate(2096,0)"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-26-TEX-I-1D443"></use></g><g data-mml-node="mi" transform="translate(675,-150) scale(0.707)"><use data-c="1D45B" xlink:href="#MJX-26-TEX-I-1D45B"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi><mi>N</mi><mi>T</mi><msub><mi>P</mi><mi>n</mi></msub></math></mjx-assistive-mml></mjx-container><script type="math/tex">INTP_n</script><span>,它的输出是中断向量(二进制代码表示)，其位数与计算机可以处理中断源的个数有关，即一个中断源对应一个向量地址。该部件实质上是一个编码器，在I/O接口中的编码器又称为设备编码器。</span></p><p><img src="./image/ch05_04_02.svg" style="display:block; margin:0 auto;"></p><h3 id='534-程序中断方式接口电路的基本组成'><span>5.3.4 程序中断方式接口电路的基本组成</span></h3><p><span>程序中断的基本组成如下：</span></p><p><img src="./image/ch05_04_03.svg" style="display:block; margin:0 auto;"></p><h2 id='54-io中断处理过程'><span>5.4 I/O中断处理过程</span></h2><h3 id='541-cpu响应中断的条件和时间'><span>5.4.1 CPU响应中断的条件和时间</span></h3><p><span>CPU响应I/O设备提出中断的条件是必须满足CPU中的允许中断触发器EINT为“1”。该设备可用开中断指令置位(称为开中断)；也可以用关中断指令或硬件自动使其复位(称为关中断)。</span></p><p><span>CPU响应中断的时间是在每条指令执行阶段的结束时刻。</span></p><h3 id='542-io中断处理过程'><span>5.4.2 I/O中断处理过程</span></h3><p><span>当CPU通过I/O指令的地址码选中某设备后，则：</span></p><ol start='' ><li><span>由CPU发启动I/O设备命令，将接口中的B置&quot;1&quot;, D置&quot;0&quot;</span></li><li><span>接口启动输入设备开始工作</span></li><li><span>输入设备将数据送入数据缓冲器寄存</span></li><li><span>输入设备向接口发出&quot;设备工作结束&quot;信号，将D置为“1”，B置为“0”，标志设备准备就绪。</span></li><li><span>当设备准备就绪(D=1)，且本设备未被屏蔽(MASK=0)时，在指令执行阶段的结束时刻，由CPU发出中断查询信号。</span></li><li><span>设备中断请求触发器INTR被置为&quot;1&quot;，标志设备向CPU提供中断请求。与此同时INTR送至排队器，进行中断判优。</span></li><li><span>若CPU允许中断(EINT=1),设备又被选中，即进入中断响应阶段，由中断响应信号INTA将排队器输出至编码器形成向量地址</span></li><li><span>向量地址送至PC，作为下一条指令的地址</span></li><li><span>由于向量地址汇中存放的一条无条件转移指令，这条指令执行结束后，无条件转至该设备的服务程序入口，开始执行中断服务程序，进入中断服务阶段，通过输入指令将数据缓冲寄存器输入数据送至CPU通用寄存器，在存入主存相关单元。</span></li><li><span>最后一条指令是中断返回指令，当其执行结束时，即中断返回至原程序的断点处。</span></li></ol><p>&nbsp;</p><h2 id='55-中断服务程序的流程'><span>5.5 中断服务程序的流程</span></h2><p><span>一般的中断程序流程分为：</span></p><ol start='' ><li><p><span>保护现场</span></p><ul><li><p><span>保存程序的断点</span></p><p><span>由中断隐指完成</span></p></li><li><p><span>保存通用寄存器和状态寄存器的内容</span></p><p><span>由中断服务程序完成</span></p></li></ul></li><li><p><span>中断服务(设备服务)</span></p></li><li><p><span>恢复现场</span></p><p><span>要求在退出服务程序前，将原程序中断时的&quot;现场&quot;恢复到原来的寄存器中。通常可以用取数指令或出栈指令(POP),将保存在存储器(或栈堆)中的信息送到原来的寄存器中。</span></p></li><li><p><span>中断返回</span></p><p><span>使其返回到原程序的断点处，以便继续执行原程序。</span></p></li></ol><p><span>在处理中断过程中，可能会出现新的中断请求，如果此时CPU暂停线性的中断服务程序，转去执行新的中断请求，称为中断嵌套或多重中断；若对新的中断请求不予理会，这种中断称为单重中断。二者流程图如下：</span></p><p><img src="./image/ch05_04_04.svg" style="display:block; margin:0 auto;"></p><h1 id='6-dma方式'><span>6. DMA方式</span></h1><h2 id='61-dma-方式的特点'><span>6.1 DMA 方式的特点</span></h2><p><span>主存和DMA接口之间有一条高速数据通路，因此主存和设备交换信息时，不通过CPU，也不需要CPU暂停现行程序为设备服务。适合高速I/O或辅存与主存之间的信息交换。</span></p><p><span>以下是中断和DMA的数据通路:</span></p><p><img src="./image/ch05_05_00.svg" style="display:block; margin:0 auto;"></p><p><span>若出现高速I/O(通过DMA接口)和CPU同时访问主存，CPU必须将总线占有权让给DMA接口使用，即DMA采用周期窃取的方式占用一个存储周期。</span></p><p><span>通常DMA与主存交换数据时采用如下三种方法：</span></p><ol start='' ><li><p><span>停止CPU访问主存</span></p><p><span>优点是控制简单，适用于数据传输率很高的I/O设备实现成组数据的传送，切点是DMA接口在访问主存时，CPU基本上处于不工作状态。</span></p></li><li><p><span>周期挪用(周期窃取)</span></p><p><span>每当I/O设备发出DMA请求时，I/O设备便挪用或窃取总线占用权一个或几个主存周期，而DMA不请求时，仍继续访问主存。</span></p><p><span>周期挪用适用于I/O设备的读/写周期大于主存周期的情况。</span></p></li><li><p><span>DMA和CPU交替访问</span></p><p><span>适用于CPU的工作周期比主存存取周期长的情况。</span></p><p><span>将一个CPU周期分为</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.605ex" height="1.934ex" role="img" focusable="false" viewBox="0 -705 1151.6 855" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.339ex;"><defs><path id="MJX-29-TEX-I-1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path><path id="MJX-29-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D436" xlink:href="#MJX-29-TEX-I-1D436"></use></g><g data-mml-node="mn" transform="translate(748,-150) scale(0.707)"><use data-c="31" xlink:href="#MJX-29-TEX-N-31"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mn>1</mn></msub></math></mjx-assistive-mml></mjx-container><script type="math/tex">C_1</script><span>和</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.605ex" height="1.934ex" role="img" focusable="false" viewBox="0 -705 1151.6 855" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.339ex;"><defs><path id="MJX-30-TEX-I-1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path><path id="MJX-30-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D436" xlink:href="#MJX-30-TEX-I-1D436"></use></g><g data-mml-node="mn" transform="translate(748,-150) scale(0.707)"><use data-c="32" xlink:href="#MJX-30-TEX-N-32"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mn>2</mn></msub></math></mjx-assistive-mml></mjx-container><script type="math/tex">C_2</script><span> 两个分周期，其中</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.605ex" height="1.934ex" role="img" focusable="false" viewBox="0 -705 1151.6 855" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.339ex;"><defs><path id="MJX-29-TEX-I-1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path><path id="MJX-29-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D436" xlink:href="#MJX-29-TEX-I-1D436"></use></g><g data-mml-node="mn" transform="translate(748,-150) scale(0.707)"><use data-c="31" xlink:href="#MJX-29-TEX-N-31"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mn>1</mn></msub></math></mjx-assistive-mml></mjx-container><script type="math/tex">C_1</script><span> 专供DMA访存，</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.605ex" height="1.934ex" role="img" focusable="false" viewBox="0 -705 1151.6 855" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.339ex;"><defs><path id="MJX-30-TEX-I-1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path><path id="MJX-30-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D436" xlink:href="#MJX-30-TEX-I-1D436"></use></g><g data-mml-node="mn" transform="translate(748,-150) scale(0.707)"><use data-c="32" xlink:href="#MJX-30-TEX-N-32"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mn>2</mn></msub></math></mjx-assistive-mml></mjx-container><script type="math/tex">C_2</script><span> 专供CPU访存。</span></p></li></ol><p><img src="./image/ch05_05_01.svg" style="display:block; margin:0 auto;"></p><h2 id='62-dma接口的功能和组成'><span>6.2 DMA接口的功能和组成</span></h2><h3 id='621-dma接口的功能'><span>6.2.1 DMA接口的功能</span></h3><p><span>利用DMA方式传送数据时，数据的传输过程完全由DMA接口电路控制，故DMA接口又有DMA控制器之称，其功能如下：</span></p><ol start='' ><li><span>向CPU申请DMA传送</span></li><li><span>在CPU允许DMA工作时，处理总线控制权的转交，避免因进入DMA工作而影响CPU正常活动或引起总线竞争。</span></li><li><span>在DMA期间管理系统总线，控制数据传输</span></li><li><span>确定数据传送的起始地址和数据长度，修正数据传送过程中的数据地址和数据长度。</span></li><li><span>在数据块传送结束时，给出DMA操作完成的信号</span></li></ol><h3 id='622-dma接口基本组成'><span>6.2.2 DMA接口基本组成</span></h3><p><img src="./image/ch05_05_02.svg" style="display:block; margin:0 auto;"></p><p><span>DMA由以下逻辑部件组成：</span></p><ol start='' ><li><p><span>主存地址寄存器(AR)</span></p><p><span>用于存放主存中需要交换数据的地址。</span></p></li><li><p><span>字计数器(WC)</span></p><p><span>用于记录传送数据的总字数，通常以交换字数的补码值预置。</span></p></li><li><p><span>数据缓冲寄存器(BR)</span></p><p><span>BR用于暂存每次传递的数据。通常DMA接口与主存之间采用字传送，而DMA与设备之间可能是字节或位传送。</span></p></li><li><p><span>DMA控制逻辑</span></p><p><span>负责管理DMA的传送过程，由控制电路、时序电路及命令状态控制寄存器等组成。过程如下：</span></p><ul><li><p><span>当设备准备好一个数据字(或一个字传送结束)，向DMA接口提出申请(DREQ)</span></p></li><li><p><span>DMA控制逻辑向CPU请求DMA服务，发出总线使用权的请求信号(HRQ)</span></p></li><li><p><span>待收到CPU发出的响应信号HLDA后，DMA控制逻辑开始负责管理DMA传送的全过程，包括：</span></p><ul><li><span>对主存地址寄存器和字计数器的修改</span></li><li><span>识别总线地址</span></li><li><span>指定传送类型</span></li><li><span>通知设备已经被授予一个DMA周期(DACK)</span></li></ul></li></ul></li><li><p><span>中断机构</span></p><p><span>当字计数器溢出(全0)时，表示一批数据交换完毕，由&quot;溢出信号&quot;通过中断机构向CPU提出中断请求，请求CPU做DMA操作的后处理。这里中断的目的是为了报告一批数据传送结束。</span></p></li><li><p><span>设备地址寄存器(DAR)</span></p><p><span>存放I/O设备的设备码或表示设备信息存储区的寻址方式。</span></p></li></ol><h2 id='63-dma的工作过程'><span>6.3 DMA的工作过程</span></h2><h3 id='631-dma传送过程'><span>6.3.1 DMA传送过程</span></h3><p><span>分为三个阶段</span></p><p><img src="./image/ch05_05_03.svg" style="display:block; margin:0 auto;"></p><ol start='' ><li><p><span>预处理</span></p><p><span>在DMA接口开始工作前，CPU必须给它预置如下信息：</span></p><ul><li><span>给DMA控制逻辑指明数据传送方向时输入还是输出</span></li><li><span>向DMA设备地址寄存器送入设备号，并启动设备</span></li><li><span>向DMA主存地址寄存器送入交换数据的主存起始地址</span></li><li><span>对字计数器赋予交换数据的个数</span></li></ul></li><li><p><span>数据传送</span></p><p><img src="./image/ch05_05_04.svg" style="display:block; margin:0 auto;"></p><p><span>DMA方式是以数据块为单位传送的，下面以周期挪用的DMA方式为例：</span></p><p><span>如果是数据输入：</span></p><ul><li><span>当设备准备好一个字时，发出选通信号，将该字读到DMA的数据缓冲寄存器(BR)中，表示数据缓冲寄存器&quot;满&quot;</span></li><li><span>设备向DMA接口发出申请(DREQ)</span></li><li><span>DMA接口向CPU申请总线控制权(HRQ)</span></li><li><span>CPU发出HLDA信号，表示允许将总线控制权交给DMA接口</span></li><li><span>将DMA接口主存地址寄存器中的主存地址送给地址总线，并命令存储器写</span></li><li><span>通知设备已被授予一个DMA周期(DACK),并为下一个字做准备</span></li><li><span>将DMA数据缓冲寄存器的内容送至数据总线</span></li><li><span>主存将数据总线上的信息写至指定的存储单元</span></li><li><span>修改主存地址和字计数值</span></li><li><span>判断数据块是否传送结束，若未结束，则继续传送；若已结束，则向CPU申请程序中断，标志数据块传送结束</span></li></ul><p><span>如果是数据输出：</span></p><ul><li><span>当DMA数据缓冲寄存器已将输出数据送至I/O设备后，表示数据缓冲寄存器已&quot;空&quot;</span></li><li><span>设备向DMA接口发请求(DREQ)</span></li><li><span>DMA接口向CPU申请总线控制权(HRQ)</span></li><li><span>CPU发回HLDA信号，表示允许将总线控制权交给DMA接口使用</span></li><li><span>将DMA主存地址寄存器中的主存地址送地址总线，并命令存储器读</span></li><li><span>通知设备已被授予一个DMA周期(DACK),并为交换一个字做准备</span></li><li><span>主存将相应地址单元的内容通过数据总线读入到DMA的数据缓冲寄存器中</span></li><li><span>将DMA数据缓冲寄存器的内容送到输出设备，若为字符设备，则需将其拆成字符输出</span></li><li><span>修改主存地址和计数值</span></li><li><span>判断数据块是否传送完成，若未完成，继续传送；若已完成，则向CPU申请程序中断。</span></li></ul></li><li><p><span>后处理</span></p><p><span>当DMA的中断请求得到响应后，CPU停止原程序的执行，转去执行中断服务程序，做一些后处理任务，如：</span></p><ul><li><span>校验送入主存的数据是否正确</span></li><li><span>决定是否继续使用DMA传送其他数据块，若需要，则又要对DMA接口进行初始化；若不需要传送，则停止外设</span></li><li><span>测试在传送过程中是否发出错误，若出错，转到错误诊断及处理错误程序。</span></li></ul></li></ol><h3 id='632-dma接口与系统的连接方式'><span>6.3.2 DMA接口与系统的连接方式</span></h3><p><span>DMA接口与系统的连接方式有两种：</span></p><ul><li><p><span>具有公共请求先的DMA请求方式</span></p><p><img src="./image/ch05_05_05.svg" style="display:block; margin:0 auto;"></p><p><span>若干个DMA接口通过一条公用的DMA请求线向CPU申请总线控制权</span></p></li><li><p><span>独立的DMA请求方式</span></p><p><img src="./image/ch05_05_06.svg" style="display:block; margin:0 auto;"></p><p><span>每一个DMA接口各有一对独立的DMA请求线和DMA相应线，由CPU的优先判别机构裁决首先响应哪个请求</span></p></li></ul><h3 id='633-dma小结'><span>6.3.3 DMA小结</span></h3><p><span>和程序中断式相比，DMA方式有如下特点：</span></p><ul><li><span>从数据传送看，程序中断考程序传送，DMA方式靠硬件传送</span></li><li><span>从CPU响应时间看，程序中断方式在一条指令结束时响应，而DMA方式可在指令周期内任何一存取周期结束时响应。</span></li><li><span>程序中断方式有处理异常能力，DMA方式没有，主要用于大批数据的传送</span></li><li><span>程序中断方式需要中断现行程序，需要保护现场；DMA方式不中断现行程序，无需保护现场</span></li><li><span>DMA的优先级比程序中断的优先级高</span></li></ul><p>&nbsp;</p><h2 id='64-dma接口的类型'><span>6.4 DMA接口的类型</span></h2><p><span>现代集成电路技术已将DMA接口制成芯片，通常有：</span></p><ol start='' ><li><p><span>选择型DMA接口</span></p><p><img src="./image/ch05_05_07.svg" style="display:block; margin:0 auto;"></p><p><span>在物理上课连接多个设备，在逻辑上至允许连接一个设备，关键是在预处理时将所选设备的设备号送入设备地址寄存器。</span></p><p><span>适用于数据传输率很高的设备。</span></p></li><li><p><span>多路型DMA接口</span></p><p><img src="./image/ch05_05_08.svg" style="display:block; margin:0 auto;"></p><p><span>不仅物理上可以连接多个设备，而且逻辑上也允许多个设备同时工作，各个设备采用字节交叉的方式通过DMA接口进行数据传送。</span></p></li></ol><p>&nbsp;</p><p>&nbsp;</p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
