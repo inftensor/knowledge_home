@@ -1,0 +1,880 @@
+<!doctype html>
+<html style='font-size:20px !important'>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///C://Users//lenovo//AppData//Roaming//Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}@import '';
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+    --font-sans-serif: 'Ubuntu', 'Source Sans Pro', sans-serif !important;
+    --font-monospace: 'Fira Code', 'Roboto Mono', monospace !important;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-sans-serif);
+    color: #34495e;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 100px;
+}
+
+#write p {
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+}
+
+#write ol li {
+    padding-left: 0.5rem;
+}
+
+#write > ul:first-child,
+#write > ol:first-child {
+    margin-top: 30px;
+}
+
+body > *:first-child {
+    margin-top: 0 !important;
+}
+
+body > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+a {
+    color: #42b983;
+    font-weight: 600;
+    padding: 0 2px;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit !important;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit !important;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit !important;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit !important;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit !important;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit !important;
+}
+
+h2 a,
+h3 a {
+    color: #34495e;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0 15px;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #ddd;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+    margin: 20px 0 7px;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li > ol,
+li > ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h3:first-child,
+body > h4:first-child,
+body > h5:first-child,
+body > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #42b983;
+    padding: 10px 15px;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0 1px;
+}
+
+#write em {
+    padding: 0 5px 0 2px;
+}
+
+#write table thead th {
+    background-color: #f2f2f2;
+}
+
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+#write .md-fences {
+    border: 1px solid #F4F4F4;
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0 !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    font-size: 0.85rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+#write code, tt {
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+}
+
+tt {
+    margin: 0 2px;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* heighlight. */
+#write mark {
+    background-color: #EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+.md-task-list-item > input {
+    margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+    background-color: #f8f8f8;
+}
+
+.md-diagram-panel {
+    position: static !important;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block > .code-tooltip {
+    bottom: .375rem;
+}
+
+#write > h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write > h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image > .md-meta {
+    border-radius: 3px;
+    font-family: var(--font-monospace);
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: var(--font-sans-serif);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>ch08_CPU的结构和功能</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1-cpu的结构">1. CPU的结构</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#11-cpu的功能">1.1 CPU的功能</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#12-cpu结构框图">1.2 CPU结构框图</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#13-cpu的寄存器">1.3 CPU的寄存器</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#131-用户可见寄存器">1.3.1 用户可见寄存器</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#132-控制和状态寄存器">1.3.2 控制和状态寄存器</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#133-举例">1.3.3 举例</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#14-控制单元和中断系统">1.4 控制单元和中断系统</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2-指令周期">2. 指令周期</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#21-指令周期的基本概念">2.1 指令周期的基本概念</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#22-指令周期的数据流">2.2 指令周期的数据流</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#221-取指周期数据流">2.2.1 取指周期数据流</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#222-间址周期的数据流">2.2.2 间址周期的数据流</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#223-执行周期数据流">2.2.3 执行周期数据流</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#224-中断周期数据流">2.2.4 中断周期数据流</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3-指令流水">3. 指令流水</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#31-指令流水原理">3.1 指令流水原理</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#32-影响流水线性能的因素">3.2 影响流水线性能的因素</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#321-结构相关">3.2.1 结构相关</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#322-数据相关">3.2.2 数据相关</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#33-流水线性能">3.3 流水线性能</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#34-流水线中的多发技术">3.4 流水线中的多发技术</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#35--流水线结构">3.5  流水线结构</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#351-指令流水线结构">3.5.1 指令流水线结构</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#352-运算流水线">3.5.2 运算流水线</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4-中断系统">4. 中断系统</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#41-概述">4.1 概述</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#411-引起中断的各种因素">4.1.1 引起中断的各种因素</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#412-中断系统需解决的问题">4.1.2 中断系统需解决的问题</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#42-中断请求标记和中断判优逻辑">4.2 中断请求标记和中断判优逻辑</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#421-中断请求标记">4.2.1 中断请求标记</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#422-中断判优逻辑">4.2.2 中断判优逻辑</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#43-中断服务程序入口地址的寻找">4.3 中断服务程序入口地址的寻找</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#44-中断响应">4.4 中断响应</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#441-响应中断的条件">4.4.1 响应中断的条件</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#442-响应中断的时间">4.4.2 响应中断的时间</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#443-中断隐指令">4.4.3 中断隐指令</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#45-保护现场和恢复现场">4.5 保护现场和恢复现场</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#46-中断屏蔽技术">4.6 中断屏蔽技术</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#461-多重中断的概念">4.6.1 多重中断的概念</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#462-实现多重中断的条件">4.6.2 实现多重中断的条件</a></div><ul class="outline-children"></ul></li></ul></li></ul></li></div></div><div id='write'  class=' first-line-indent'><h1 id='1-cpu的结构'><span>1. CPU的结构</span></h1><h2 id='11-cpu的功能'><span>1.1 CPU的功能</span></h2><p><span>CPU实质包括运算器和控制器两大部分，这里重点介绍控制器的功能:</span></p><ol start='' ><li><p><span>取指令</span></p><p><span>控制器必须具备自动地从存储器中取出指令的功能。为此，要求控制器能自动形成指令的地址，并能发出取指令的命令，将对应此地址的指令取到控制器中。</span></p><p><span>第一条指令的地址可以人为定义，也可以由系统设定</span></p></li><li><p><span>分析指令</span></p><ul><li><span>分析此指令要完成什么操作，即控制器需要发出什么操作命令</span></li><li><span>分析参与此次操作的操作数地址，即操作数的有效地址</span></li></ul></li><li><p><span>执行指令</span></p><p><span>根据分析指令产生的&quot;操作命令&quot;和&quot;操作数地址&quot;的要求，形成操作控制信号序列，通过对运算器、存储器以及I/O设备的操作，执行每条指令。</span></p></li></ol><p><span>此外，控制器还必须能控制程序的输入和运算结果的输出以及对总线的管理，甚至能处理机器运行中出现的异常情况和特殊请求，即处理中断的能力。</span></p><p>&nbsp;</p><h2 id='12-cpu结构框图'><span>1.2 CPU结构框图</span></h2><p><span>CPU由以下四个部分组成:</span></p><p><img src="./image/ch08_00_00.svg" style="display:block; margin:0 auto;"></p><p><span>将上图细化，有:</span></p><p><img src="./image/ch08_00_01.svg" style="display:block; margin:0 auto;"></p><h2 id='13-cpu的寄存器'><span>1.3 CPU的寄存器</span></h2><p><span>CPU内的寄存器大致可分为两类</span></p><ul><li><span>用户可见的寄存器，用户可对这类寄存器编程，以及通过优化使CPU因使用这里寄存器而减少对主存的访问次数</span></li><li><span>控制和状态控制寄存器，用户不可对这类寄存器编程，它们被控制部件使用，以控制CPU的操作，也可被带有特权的操作系统使用，从而控制程序执行</span></li></ul><h3 id='131-用户可见寄存器'><span>1.3.1 用户可见寄存器</span></h3><ol start='' ><li><p><span>通用寄存器</span></p><p><span>可由程序设计者指定许多功能，可用于存放操作数，也可作为满足某种寻址方式所需的寄存器。</span></p></li><li><p><span>数据寄存器</span></p><ul><li><span>用于存放操作数，其位数应满足多数数据类型的数值范围。</span></li><li><span>有些机器允许使用连续的两个寄存器存放双倍字长的值。</span></li><li><span>还有的机器的数据寄存器只能用于保存数据，不能用于操作数的地址</span></li></ul></li><li><p><span>地址寄存器</span></p><p><span>用于存放地址，其本身可以具有通用性，也可以用于特殊的寻址方式。</span></p></li><li><p><span>条件码寄存器</span></p><ul><li><span>这类寄存器中存放条件码，它们对用户来说是部分透明的。</span></li><li><span>条件码可被测试，作为分支运算的依据。</span></li><li><span>有些条件码可以被设置，如：最高进位标志C，可用指令对它置位和复位。</span></li><li><span>将条件码放在一个或多个寄存器中，就构成了条件码寄存器。</span></li><li><span>在调用子程序前，必须将所有的用户可见寄存器内容保存起来，可由CPU自动完成，也可由程序员编程保存</span></li></ul></li></ol><h3 id='132-控制和状态寄存器'><span>1.3.2 控制和状态寄存器</span></h3><p><span>   下面四种寄存器在指令过程中起重要作用:</span></p><ol start='' ><li><p><span>MAR</span></p><p><span>存储器地址寄存器，用于存放将被访问的存储单元的位置</span></p></li><li><p><span>MDR</span></p><p><span>存储器数据寄存器，用于存放欲存入存储器中的数据或最近从存储器中读取处的数据</span></p></li><li><p><span>PC</span></p><p><span>程序计数器，存放现行指令的地址，通常具有计数功能。当遇到转移类指令时，PC的值可以被修改</span></p></li><li><p><span>IR</span></p><p><span>指令寄存器，存放当前欲执行的指令</span></p><p>&nbsp;</p><p>&nbsp;</p></li></ol><p><span>通过这四个寄存器，CPU和主存可交换信息。</span></p><p><span>CPU内部必须给ALU提供数据，因此ALU必须可直接访问MDR和用户可见寄存器，ALU的外围还可以有另一些寄存器，这些寄存器用于ALU的输入/输出以及用于和MDR及用户可见寄存器交换数据。</span></p><p><span>此外，还有用来存放程序状态字PSW的寄存器，该寄存器用来存放条件码和其他状态信息。在具有中断系统的机器中还有中断标记寄存器。</span></p><p>&nbsp;</p><h3 id='133-举例'><span>1.3.3 举例</span></h3><p><span>下面以Z8000、8086和MC68000说明:</span></p><p><img src="./image/ch08_00_02.svg" style="display:block; margin:0 auto;"></p><ol start='' ><li><p><span>Z8000</span></p><ul><li><span>有16个16位的通用寄存器，这些寄存器可存放地址、数据，也可作为变址寄存器，其中有两个寄存器用作栈指针，可给用作8位和32位的运算</span></li><li><span>有5个与程序状态有关的寄存器，一个用于存放状态标记，两个用于程序计数器，两个用于存放偏移量。</span></li><li><span>确定一个地址需要两个寄存器</span></li></ul></li><li><p><span>8086</span></p><ul><li><span>4个16位的数据寄存器，即AX(累加器)、BX(基址寄存器)、CX(计数寄存器)和DX(数据寄存器)，也可兼做8个8位的寄存器(AH、AL、BH、BL、CH、CL、DH、DL)</span></li><li><span>有两个16位的指针(栈指针SP和基址指针BP)和两个变址寄存器(源基址寄存器SI和目的变址寄存器DI)</span></li><li><span>还有4个段地址寄存器(代码段CS、数据段DS、堆栈段SS和附件段ES)</span></li><li><span>以及指令指针IP(相当于PC)和状态寄存器F</span></li></ul></li><li><p><span>MC68000</span></p><ul><li><span>8个数据寄存器，主要用于数据运算，当需要变址时，也可作变址寄存器使用。允许8位、16位和32位的数据运算，由操作码确定。</span></li><li><span>9个地址寄存器，用于存放32位地址，其中的两个(</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.346ex" height="2.351ex" role="img" focusable="false" viewBox="0 -759 3246.9 1039.1" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.634ex;"><defs><path id="MJX-19-TEX-I-1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path><path id="MJX-19-TEX-N-37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path><path id="MJX-19-TEX-V-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D434" xlink:href="#MJX-19-TEX-I-1D434"></use></g><g data-mml-node="mn" transform="translate(783,-150) scale(0.707)"><use data-c="37" xlink:href="#MJX-19-TEX-N-37"></use></g></g><g data-mml-node="mtext" transform="translate(1186.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">和</text></g><g data-mml-node="msubsup" transform="translate(2060.3,0)"><g data-mml-node="mi"><use data-c="1D434" xlink:href="#MJX-19-TEX-I-1D434"></use></g><g data-mml-node="mo" transform="translate(783,363) scale(0.707)"><use data-c="2032" xlink:href="#MJX-19-TEX-V-2032"></use></g><g data-mml-node="mn" transform="translate(783,-264.6) scale(0.707)"><use data-c="37" xlink:href="#MJX-19-TEX-N-37"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>A</mi><mn>7</mn></msub><mtext>和</mtext><msubsup><mi>A</mi><mn>7</mn><mo data-mjx-alternate="1">′</mo></msubsup></math></mjx-assistive-mml></mjx-container><script type="math/tex">A_7和A_7'</script><span> ) 也可用作堆栈指针，分别供用户和操作系统使用。针对当前执行的模式，这两个寄存器在某一时刻只能使用一个</span></li><li><span>还有一个32位的程序计数器PC和16位的状态寄存器。</span></li></ul></li></ol><h2 id='14-控制单元和中断系统'><span>1.4 控制单元和中断系统</span></h2><p><span>控制单元(CU)是提供完成计算机全部指令的微操作命令序列部件。</span></p><p><span>现代计算机中微操作命令序列形成有:</span></p><ul><li><span>组合逻辑设计方法，为硬连线逻辑</span></li><li><span>微程序设计方法，为存储逻辑。</span></li></ul><p>&nbsp;</p><h1 id='2-指令周期'><span>2. 指令周期</span></h1><h2 id='21-指令周期的基本概念'><span>2.1 指令周期的基本概念</span></h2><p><span>CPU每取出并执行一条指令所需的全部时间称为指令周期，也即CPU完成一条指令的时间。</span></p><p><span>一个完整的指令周期包括取指、间址、执行和中断4个子周期。</span></p><p><img src="./image/ch08_01_00.svg" style="display:block; margin:0 auto;"></p><p><span>上述四个周期都有CPU访存操作，不过访存目的不同:</span></p><ul><li><span>取指周期: 取指令</span></li><li><span>间址周期: 取有效地址</span></li><li><span>执行周期: 取操作数(当指令为访存时)</span></li><li><span>中断周期: 保存程序断点</span></li></ul><p><span>这四个周期又称为CPU的工作周期，在CPU内可设置4个标志触发器来区分:</span></p><p><img src="./image/ch08_01_01.svg" style="display:block; margin:0 auto;"></p><h2 id='22-指令周期的数据流'><span>2.2 指令周期的数据流</span></h2><h3 id='221-取指周期数据流'><span>2.2.1 取指周期数据流</span></h3><p><img src="./image/ch08_01_02.svg" style="display:block; margin:0 auto;"></p><p><span>此时的数据流:</span></p><ul><li><span>PC中存放现行指令的地址，该地址送到MAR</span></li><li><span>地址从MAR送到地址总线</span></li><li><span>控制部件CU向存储器发出读命令</span></li><li><span>MAR所指单元内容(指令)经数据线送至MDR</span></li><li><span>MDR内容送至IR</span></li><li><span>CU控制PC内容加1，形成下一条指令的地址</span></li></ul><h3 id='222-间址周期的数据流'><span>2.2.2 间址周期的数据流</span></h3><p><img src="./image/ch08_01_03.svg" style="display:block; margin:0 auto;"></p><p><span>一旦取指周期结束，CU检查IR的内容，确定是否有间址操作，如果需要间址操作，则:</span></p><ul><li><span>MDR中指示形式地址的右 N 位 (记作 Ad(MDR)) 将被送到MAR</span></li><li><span>MAR地址送到地址总线</span></li><li><span>CU向存储器发出读命令</span></li><li><span>获取有效地址并存至MDR</span></li></ul><h3 id='223-执行周期数据流'><span>2.2.3 执行周期数据流</span></h3><p><span>由于不同的指令在执行周期的操作不同，因此执行周期的数据流是多种多样的。</span></p><h3 id='224-中断周期数据流'><span>2.2.4 中断周期数据流</span></h3><p><img src="./image/ch08_01_04.svg" style="display:block; margin:0 auto;"></p><p><span>CPU进入中断周期要完成一些列的操作,其中PC把当前的内容保存起来，以待执行完中断服务程序后可以准确返回到该程序的间断处，其数据流为:</span></p><ul><li><span>CU把保存程序断点的存储器特殊地址(如栈指针的内容)送往MAR</span></li><li><span>MAR把地址送到地址总线上</span></li><li><span>CU向存储器发出写命令</span></li><li><span>CU将PC的内容(程序断点)送到MDR</span></li><li><span>MDR内容经数据总线存入存储器中</span></li><li><span>CU将中断服务程序的入口地址送至PC，为下一周期的取值做好准备</span></li></ul><p>&nbsp;</p><h1 id='3-指令流水'><span>3. 指令流水</span></h1><p><span>为了进一步提高处理机速度，通常可以:</span></p><ol start='' ><li><p><span>提高器件的性能</span></p><p><span>器件的每一次更新换代都能使计算机的软硬件技术和计算机性能获得突破性进展。</span></p></li><li><p><span>改进系统的结构，开发系统的并行性</span></p><p><span>并行包含同时性和并发性，前者是指两个或多个事件在同一时刻发生，后者是指两个或多个事件在同一时间段发生</span></p><p><span>并行性体现在不同等级上，通常分为四个级别:</span></p><ul><li><span>作业级或程序级</span></li><li><span>任务级或进程级</span></li><li><span>指令之间级</span></li><li><span>指令内部级</span></li></ul><p><span>前两者为粗粒度，又称过程级，后两者为细粒度，又称指令级。</span></p><p><span>粗粒度并行性一般用算法(软件)实现，细粒度并行性一般采用硬件实现。</span></p><p><span>粗粒度并行性是在多个处理机上分别运行多个进程，由多台处理机合作完成一个程序；细粒度并行性是指在处理机的操作级和指令级的并行性，其中指令的流水作业就是一项重要技术。</span></p></li></ol><h2 id='31-指令流水原理'><span>3.1 指令流水原理</span></h2><ol start='' ><li><p><span>先简单分析指令只有取指令和执行指令两个过程:</span></p><ul><li><p><span>在不采用流水线情况向，取指令和执行指令是周而复始的</span></p><p><img src="./image/ch08_02_00.svg" style="display:block; margin:0 auto;"></p></li><li><p><span>如果执行指令阶段不访问主存，则完全可利用这段时间取下一条指令，这样就使取下一条指令的操作和执行当前指令的操作同时进行，这就是两条指令的重叠，即指令的二级流水。</span></p><p><img src="./image/ch08_02_01.svg" style="display:block; margin:0 auto;"></p></li><li><p><span>由指令部件取出一条指令，并将它暂存起来，如果执行部件空闲，就将暂存的指令传给执行部件执行。与此同时，指令部件又可取出下一条指令并暂存起来，这称为指令预取。</span></p></li><li><p><span>进一步分析流水线，有如下原因导致执行效率无法加倍</span></p><ul><li><span>指令的执行时间一般大于取值周期，取值阶段可能要等待一段时间，也即存放在指令部件缓冲区的指令还不能立即传给执行部件</span></li><li><span>当遇到转移指令时，下一条指令是不可知的，因为必须等待执行阶段结束后，才能获知条件是否成立。</span></li></ul></li><li><p><span>为减少时间损失，采用猜测法，即当条件转移指令从取指阶段进入执行阶段时，指令部件仍按顺序预期下一条指令。</span></p></li></ul></li><li><p><span>为了进一步提高处理速度，可将指令处理分解为更细的几个阶段</span></p><ul><li><p><span>取指(FI)</span></p><p><span>从存储器取出一条指令并暂时存入指令部件的缓冲区</span></p></li><li><p><span>指令译码(DI)</span></p><p><span>取定操作性质和操作数地址的形成方式</span></p></li><li><p><span>计算操作数地址(CO)</span></p><p><span>计算操作数的有效地址，涉及存储器间接寻址、间接寻址、变址、基址、相对寻址等各种地址计算方式</span></p></li><li><p><span>取操作数(FO)</span></p><p><span>从存储器中取操作数(若操作数在寄存器中，则无此阶段)</span></p></li><li><p><span>执行指令(EI)</span></p><p><span>执行指令所需的操作，并将结果存于目的位置(寄存器)</span></p></li><li><p><span>写操作数</span></p><p><span>将结果写入存储器</span></p></li></ul><p><span>假设各个阶段时间相等且不存在存储器访问冲突，则指令六级流水时序如下:</span></p><p><img src="./image/ch08_02_02.svg" style="display:block; margin:0 auto;"></p></li></ol><p><span>     </span></p><h2 id='32-影响流水线性能的因素'><span>3.2 影响流水线性能的因素</span></h2><h3 id='321-结构相关'><span>3.2.1 结构相关</span></h3><p><span>结构相关是当前指令在重叠执行过程中，不同指令争用同一功能部件产生资源冲突时产生的，又称资源相关。</span></p><p><span>通常，大多数机器都是将指令和数据保存在同一存储器中，且只有一个访问口，如果在一个时钟周期内，流水线既要完成某条指令对存储器的访问操作，又要完成另一条指令的取值操作，就会发生访问冲突。</span></p><p><span>解决的办法:</span></p><ul><li><span>可以让流水线在完成一条指令对数据的存储访问时，暂停(一个时钟周期)取后一条指令的操作</span></li><li><span>也可以设置两个独立的存储器分别存放操作数和指令，以免取指令和取操作数同时进行时互相冲突</span></li><li><span>还可以采用指令预取技术，如在CPU中设置指令队列，将指令预先取到指令队列中排队。</span></li></ul><p>&nbsp;</p><h3 id='322-数据相关'><span>3.2.2 数据相关</span></h3><p><span>数据相关是流水线中的各条指令因重叠操作，可能改变操作数的读写访问顺序，从而导致数据相关冲突。</span></p><p><span>根据指令间对同一寄存器读和写的先后次序关系，数据相关冲突可分为:</span></p><ul><li><p><span>写后读相关(RAW)</span></p><p><span>指令j在指令i写入寄存器前就读出该寄存器的内容，这样，指令j就会错误的读出该寄存器旧的内容</span></p></li><li><p><span>读后写(WAR)</span></p><p><span>指令j视图在指令i读出寄存器之前就写入该寄存器，这样，指令i就错误读出该寄存器新的内容</span></p></li><li><p><span>写后写(WRW)</span></p><p><span>指令j试图在指令i写入寄存器之前就写入该寄存器，这样两次写入的先后顺序颠倒，就会错误地使由指令i写入的值称为该寄存器的内容</span></p><p><span>上述三种数据相关在按序流动的流水线中，只出现RAW相关；而在非按序流动的流水线中，三者都可能发生。</span></p></li></ul><p>&nbsp;</p><p><span>解决数据相关办法:</span></p><ul><li><p><span>采用后推法</span></p><p><span>将相关指令延迟到所需操作数被写回寄存器后在执行的方式。</span></p></li><li><p><span>采用定向技术，或旁路技术、相关专用通路技术</span></p><p><span>不必等待某条指令的执行结果送回到寄存器，自从寄存器中取出该结果，作为下一条指令的源操作数，而是直接将执行结果送到其他指令所需的地方。</span></p><p><img src="./image/ch08_02_03.svg" style="display:block; margin:0 auto;"></p><p><span>上图中，当AND指令将要进入EX阶段时，ADD指令的执行结果已存取暂存器2，SUB指令执行的结果暂存存储器1，而暂存器2的内容(存放送往</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.705ex" height="1.885ex" role="img" focusable="false" viewBox="0 -683 1195.6 833" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.339ex;"><defs><path id="MJX-20-TEX-I-1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"></path><path id="MJX-20-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D445" xlink:href="#MJX-20-TEX-I-1D445"></use></g><g data-mml-node="mn" transform="translate(792,-150) scale(0.707)"><use data-c="31" xlink:href="#MJX-20-TEX-N-31"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>R</mi><mn>1</mn></msub></math></mjx-assistive-mml></mjx-container><script type="math/tex">R_1</script><span> 的结果) 可通过旁路通道，经过多路开关送到ALU中。</span></p><h3 id='323-控制相关'><span>3.2.3 控制相关</span></h3><p><span>控制相关主要是由转移指令引起的。转移指令大约占总指令的1/4,比起数据相关，它会使流水线丧失更多的性能。</span></p><p><span>为了解决控制相关，解决办法为:</span></p><ul><li><span>采用尽早判别转移是否发生，尽早生成转移目标地址</span></li><li><span>预取转移成功或不成功两个控制流方向上的目标指令</span></li><li><span>加快和提前形成条件码</span></li><li><span>条转移方向的猜准率</span></li></ul><p>&nbsp;</p></li></ul><h2 id='33-流水线性能'><span>3.3 流水线性能</span></h2><p><span>  流水线的性能通常用以下指标衡量</span></p><ol start='' ><li><p><span>吞吐率</span></p><p><span>单位时间内流水线所完成指令或输出结果的数量，又分为:</span></p><ul><li><p><span>最大吞吐率</span></p><p><span>在连续流动达到稳定转台或获得的吞吐率。对于m段的指令流水线而言，各段的时间均为 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.701ex" height="1.645ex" role="img" focusable="false" viewBox="0 -716 1194 727" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-21-TEX-N-394" d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z"></path><path id="MJX-21-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="394" xlink:href="#MJX-21-TEX-N-394"></use></g><g data-mml-node="mi" transform="translate(833,0)"><use data-c="1D461" xlink:href="#MJX-21-TEX-I-1D461"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">Δ</mi><mi>t</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Delta t</script><span> ,则最大吞吐率为</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n320" cid="n320" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="12.194ex" height="4.613ex" role="img" focusable="false" viewBox="0 -1342 5389.6 2039" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -1.577ex;"><defs><path id="MJX-15-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-15-TEX-I-1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path id="MJX-15-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-15-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-15-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path id="MJX-15-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-15-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-15-TEX-N-394" d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z"></path><path id="MJX-15-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D447" xlink:href="#MJX-15-TEX-I-1D447"></use></g><g data-mml-node="TeXAtom" transform="translate(617,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D45D" xlink:href="#MJX-15-TEX-I-1D45D"></use></g><g data-mml-node="mi" transform="translate(503,0)"><use data-c="1D45A" xlink:href="#MJX-15-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(1381,0)"><use data-c="1D44E" xlink:href="#MJX-15-TEX-I-1D44E"></use></g><g data-mml-node="mi" transform="translate(1910,0)"><use data-c="1D465" xlink:href="#MJX-15-TEX-I-1D465"></use></g></g></g><g data-mml-node="mo" transform="translate(2699.8,0)"><use data-c="3D" xlink:href="#MJX-15-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(3755.6,0)"><g data-mml-node="mn" transform="translate(567,676)"><use data-c="31" xlink:href="#MJX-15-TEX-N-31"></use></g><g data-mml-node="mrow" transform="translate(220,-686)"><g data-mml-node="mi"><use data-c="394" xlink:href="#MJX-15-TEX-N-394"></use></g><g data-mml-node="mi" transform="translate(833,0)"><use data-c="1D461" xlink:href="#MJX-15-TEX-I-1D461"></use></g></g><rect width="1394" height="60" x="120" y="220"></rect></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>T</mi><mrow data-mjx-texclass="ORD"><mi>p</mi><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow></mfrac></math></mjx-assistive-mml></mjx-container></div></div></li><li><p><span>实际吞吐率</span></p><p><span>指流水线完成n条指令的实际吞吐率，对于m段指令的流水线，处理n条指令的实际吞吐率为</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n324" cid="n324" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="41.537ex" height="5.394ex" role="img" focusable="false" viewBox="0 -1424.2 18359.6 2384.2" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.172ex;"><defs><path id="MJX-16-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-16-TEX-I-1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path id="MJX-16-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-16-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-16-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-16-TEX-N-394" d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z"></path><path id="MJX-16-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-16-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-16-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-16-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-16-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-16-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-16-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-16-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path id="MJX-16-TEX-N-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D447" xlink:href="#MJX-16-TEX-I-1D447"></use></g><g data-mml-node="TeXAtom" transform="translate(617,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D45D" xlink:href="#MJX-16-TEX-I-1D45D"></use></g></g></g><g data-mml-node="mo" transform="translate(1300.5,0)"><use data-c="3D" xlink:href="#MJX-16-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(2356.2,0)"><g data-mml-node="mi" transform="translate(3714.4,676)"><use data-c="1D45B" xlink:href="#MJX-16-TEX-I-1D45B"></use></g><g data-mml-node="mrow" transform="translate(220,-710)"><g data-mml-node="mi"><use data-c="1D45A" xlink:href="#MJX-16-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(878,0)"><use data-c="394" xlink:href="#MJX-16-TEX-N-394"></use></g><g data-mml-node="mi" transform="translate(1711,0)"><use data-c="1D461" xlink:href="#MJX-16-TEX-I-1D461"></use></g><g data-mml-node="mo" transform="translate(2294.2,0)"><use data-c="2B" xlink:href="#MJX-16-TEX-N-2B"></use></g><g data-mml-node="mo" transform="translate(3294.4,0)"><use data-c="28" xlink:href="#MJX-16-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(3683.4,0)"><use data-c="1D45B" xlink:href="#MJX-16-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(4505.7,0)"><use data-c="2212" xlink:href="#MJX-16-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(5505.9,0)"><use data-c="31" xlink:href="#MJX-16-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(6005.9,0)"><use data-c="29" xlink:href="#MJX-16-TEX-N-29"></use></g><g data-mml-node="mi" transform="translate(6394.9,0)"><use data-c="394" xlink:href="#MJX-16-TEX-N-394"></use></g><g data-mml-node="mi" transform="translate(7227.9,0)"><use data-c="1D461" xlink:href="#MJX-16-TEX-I-1D461"></use></g></g><rect width="7788.9" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(10662.9,0)"><use data-c="3D" xlink:href="#MJX-16-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(11718.7,0)"><g data-mml-node="msub" transform="translate(2109.4,747.2)"><g data-mml-node="mi"><use data-c="1D447" xlink:href="#MJX-16-TEX-I-1D447"></use></g><g data-mml-node="TeXAtom" transform="translate(617,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D45D" xlink:href="#MJX-16-TEX-I-1D45D"></use></g><g data-mml-node="mi" transform="translate(503,0)"><use data-c="1D45A" xlink:href="#MJX-16-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(1381,0)"><use data-c="1D44E" xlink:href="#MJX-16-TEX-I-1D44E"></use></g><g data-mml-node="mi" transform="translate(1910,0)"><use data-c="1D465" xlink:href="#MJX-16-TEX-I-1D465"></use></g></g></g><g data-mml-node="mrow" transform="translate(220,-710)"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-16-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(722.2,0)"><use data-c="2B" xlink:href="#MJX-16-TEX-N-2B"></use></g><g data-mml-node="mo" transform="translate(1722.4,0)"><use data-c="28" xlink:href="#MJX-16-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(2111.4,0)"><use data-c="1D45A" xlink:href="#MJX-16-TEX-I-1D45A"></use></g><g data-mml-node="mo" transform="translate(3211.7,0)"><use data-c="2212" xlink:href="#MJX-16-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(4211.9,0)"><use data-c="31" xlink:href="#MJX-16-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(4711.9,0)"><use data-c="29" xlink:href="#MJX-16-TEX-N-29"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(5100.9,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-16-TEX-N-2F"></use></g></g><g data-mml-node="mi" transform="translate(5600.9,0)"><use data-c="1D45B" xlink:href="#MJX-16-TEX-I-1D45B"></use></g></g><rect width="6400.9" height="60" x="120" y="220"></rect></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>T</mi><mrow data-mjx-texclass="ORD"><mi>p</mi></mrow></msub><mo>=</mo><mfrac><mi>n</mi><mrow><mi>m</mi><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>+</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><msub><mi>T</mi><mrow data-mjx-texclass="ORD"><mi>p</mi><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mrow><mn>1</mn><mo>+</mo><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mi>n</mi></mrow></mfrac></math></mjx-assistive-mml></mjx-container></div></div></li></ul></li><li><p><span>加速比</span></p><p><span>指m段流水线的速度与等功能的非流水线的速度之比。   n条指令在m段流水线上的加速比为</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n328" cid="n328" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="56.019ex" height="5.321ex" role="img" focusable="false" viewBox="0 -1392 24760.4 2352" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.172ex;"><defs><path id="MJX-17-TEX-I-1D446" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path><path id="MJX-17-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path><path id="MJX-17-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-17-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-17-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-17-TEX-N-394" d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z"></path><path id="MJX-17-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-17-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-17-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-17-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-17-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-17-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-17-TEX-N-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D446" xlink:href="#MJX-17-TEX-I-1D446"></use></g><g data-mml-node="mi" transform="translate(646,-150) scale(0.707)"><use data-c="1D443" xlink:href="#MJX-17-TEX-I-1D443"></use></g></g><g data-mml-node="mo" transform="translate(1504.8,0)"><use data-c="3D" xlink:href="#MJX-17-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(2560.6,0)"><g data-mml-node="mrow" transform="translate(2678.4,676)"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-17-TEX-I-1D45B"></use></g><g data-mml-node="mi" transform="translate(600,0)"><use data-c="1D45A" xlink:href="#MJX-17-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(1478,0)"><use data-c="394" xlink:href="#MJX-17-TEX-N-394"></use></g><g data-mml-node="mi" transform="translate(2311,0)"><use data-c="1D461" xlink:href="#MJX-17-TEX-I-1D461"></use></g></g><g data-mml-node="mrow" transform="translate(220,-710)"><g data-mml-node="mi"><use data-c="1D45A" xlink:href="#MJX-17-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(878,0)"><use data-c="394" xlink:href="#MJX-17-TEX-N-394"></use></g><g data-mml-node="mi" transform="translate(1711,0)"><use data-c="1D461" xlink:href="#MJX-17-TEX-I-1D461"></use></g><g data-mml-node="mo" transform="translate(2294.2,0)"><use data-c="2B" xlink:href="#MJX-17-TEX-N-2B"></use></g><g data-mml-node="mo" transform="translate(3294.4,0)"><use data-c="28" xlink:href="#MJX-17-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(3683.4,0)"><use data-c="1D45B" xlink:href="#MJX-17-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(4505.7,0)"><use data-c="2212" xlink:href="#MJX-17-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(5505.9,0)"><use data-c="31" xlink:href="#MJX-17-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(6005.9,0)"><use data-c="29" xlink:href="#MJX-17-TEX-N-29"></use></g><g data-mml-node="mi" transform="translate(6394.9,0)"><use data-c="394" xlink:href="#MJX-17-TEX-N-394"></use></g><g data-mml-node="mi" transform="translate(7227.9,0)"><use data-c="1D461" xlink:href="#MJX-17-TEX-I-1D461"></use></g></g><rect width="7788.9" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(10867.3,0)"><use data-c="3D" xlink:href="#MJX-17-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(11923,0)"><g data-mml-node="mrow" transform="translate(1692.4,676)"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-17-TEX-I-1D45B"></use></g><g data-mml-node="mi" transform="translate(600,0)"><use data-c="1D45A" xlink:href="#MJX-17-TEX-I-1D45A"></use></g></g><g data-mml-node="mrow" transform="translate(220,-686)"><g data-mml-node="mi"><use data-c="1D45A" xlink:href="#MJX-17-TEX-I-1D45A"></use></g><g data-mml-node="mo" transform="translate(1100.2,0)"><use data-c="2B" xlink:href="#MJX-17-TEX-N-2B"></use></g><g data-mml-node="mi" transform="translate(2100.4,0)"><use data-c="1D45B" xlink:href="#MJX-17-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(2922.7,0)"><use data-c="2212" xlink:href="#MJX-17-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(3922.9,0)"><use data-c="31" xlink:href="#MJX-17-TEX-N-31"></use></g></g><rect width="4622.9" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(17063.7,0)"><use data-c="3D" xlink:href="#MJX-17-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(18119.5,0)"><g data-mml-node="mi" transform="translate(2881.4,676)"><use data-c="1D45A" xlink:href="#MJX-17-TEX-I-1D45A"></use></g><g data-mml-node="mrow" transform="translate(220,-710)"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-17-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(722.2,0)"><use data-c="2B" xlink:href="#MJX-17-TEX-N-2B"></use></g><g data-mml-node="mo" transform="translate(1722.4,0)"><use data-c="28" xlink:href="#MJX-17-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(2111.4,0)"><use data-c="1D45A" xlink:href="#MJX-17-TEX-I-1D45A"></use></g><g data-mml-node="mo" transform="translate(3211.7,0)"><use data-c="2212" xlink:href="#MJX-17-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(4211.9,0)"><use data-c="31" xlink:href="#MJX-17-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(4711.9,0)"><use data-c="29" xlink:href="#MJX-17-TEX-N-29"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(5100.9,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-17-TEX-N-2F"></use></g></g><g data-mml-node="mi" transform="translate(5600.9,0)"><use data-c="1D45B" xlink:href="#MJX-17-TEX-I-1D45B"></use></g></g><rect width="6400.9" height="60" x="120" y="220"></rect></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>S</mi><mi>P</mi></msub><mo>=</mo><mfrac><mrow><mi>n</mi><mi>m</mi><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><mrow><mi>m</mi><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>+</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>n</mi><mi>m</mi></mrow><mrow><mi>m</mi><mo>+</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac><mi>m</mi><mrow><mn>1</mn><mo>+</mo><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mi>n</mi></mrow></mfrac></math></mjx-assistive-mml></mjx-container></div></div></li><li><p><span>效率</span></p><p><span>指流水线中各功能段的利用率。通常用流水线各段处于工作时间的时空区域与流水线各段的总时空区之比来衡量流水线，即</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n332" cid="n332" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="51.036ex" height="5.457ex" role="img" focusable="false" viewBox="0 -1452.2 22557.7 2412.2" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.172ex;"><defs><path id="MJX-18-TEX-I-1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path><path id="MJX-18-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-18-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-18-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-18-TEX-N-394" d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z"></path><path id="MJX-18-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-18-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-18-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-18-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-18-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-18-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-18-TEX-I-1D446" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path><path id="MJX-18-TEX-I-1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path id="MJX-18-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-18-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-18-TEX-I-1D438"></use></g><g data-mml-node="mo" transform="translate(1041.8,0)"><use data-c="3D" xlink:href="#MJX-18-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(2097.6,0)"><g data-mml-node="mrow" transform="translate(2520.4,676)"><g data-mml-node="mi"><use data-c="1D45A" xlink:href="#MJX-18-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(878,0)"><use data-c="1D45B" xlink:href="#MJX-18-TEX-I-1D45B"></use></g><g data-mml-node="mi" transform="translate(1478,0)"><use data-c="394" xlink:href="#MJX-18-TEX-N-394"></use></g><g data-mml-node="mi" transform="translate(2311,0)"><use data-c="1D461" xlink:href="#MJX-18-TEX-I-1D461"></use></g></g><g data-mml-node="mrow" transform="translate(220,-710)"><g data-mml-node="mi"><use data-c="1D45A" xlink:href="#MJX-18-TEX-I-1D45A"></use></g><g data-mml-node="mo" transform="translate(878,0)"><use data-c="28" xlink:href="#MJX-18-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1267,0)"><use data-c="1D45A" xlink:href="#MJX-18-TEX-I-1D45A"></use></g><g data-mml-node="mo" transform="translate(2367.2,0)"><use data-c="2B" xlink:href="#MJX-18-TEX-N-2B"></use></g><g data-mml-node="mi" transform="translate(3367.4,0)"><use data-c="1D45B" xlink:href="#MJX-18-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(4189.7,0)"><use data-c="2212" xlink:href="#MJX-18-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(5189.9,0)"><use data-c="31" xlink:href="#MJX-18-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(5689.9,0)"><use data-c="29" xlink:href="#MJX-18-TEX-N-29"></use></g><g data-mml-node="mi" transform="translate(6078.9,0)"><use data-c="394" xlink:href="#MJX-18-TEX-N-394"></use></g><g data-mml-node="mi" transform="translate(6911.9,0)"><use data-c="1D461" xlink:href="#MJX-18-TEX-I-1D461"></use></g></g><rect width="7472.9" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(10088.2,0)"><use data-c="3D" xlink:href="#MJX-18-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(11144,0)"><g data-mml-node="mi" transform="translate(2131.4,676)"><use data-c="1D45B" xlink:href="#MJX-18-TEX-I-1D45B"></use></g><g data-mml-node="mrow" transform="translate(220,-686)"><g data-mml-node="mi"><use data-c="1D45A" xlink:href="#MJX-18-TEX-I-1D45A"></use></g><g data-mml-node="mo" transform="translate(1100.2,0)"><use data-c="2B" xlink:href="#MJX-18-TEX-N-2B"></use></g><g data-mml-node="mi" transform="translate(2100.4,0)"><use data-c="1D45B" xlink:href="#MJX-18-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(2922.7,0)"><use data-c="2212" xlink:href="#MJX-18-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(3922.9,0)"><use data-c="31" xlink:href="#MJX-18-TEX-N-31"></use></g></g><rect width="4622.9" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(16284.7,0)"><use data-c="3D" xlink:href="#MJX-18-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(17340.4,0)"><g data-mml-node="msub" transform="translate(220,747.2)"><g data-mml-node="mi"><use data-c="1D446" xlink:href="#MJX-18-TEX-I-1D446"></use></g><g data-mml-node="mi" transform="translate(646,-150) scale(0.707)"><use data-c="1D45D" xlink:href="#MJX-18-TEX-I-1D45D"></use></g></g><g data-mml-node="mi" transform="translate(306.8,-686)"><use data-c="1D45A" xlink:href="#MJX-18-TEX-I-1D45A"></use></g><rect width="1251.7" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(19109.9,0)"><use data-c="3D" xlink:href="#MJX-18-TEX-N-3D"></use></g><g data-mml-node="msub" transform="translate(20165.7,0)"><g data-mml-node="mi"><use data-c="1D447" xlink:href="#MJX-18-TEX-I-1D447"></use></g><g data-mml-node="mi" transform="translate(617,-150) scale(0.707)"><use data-c="1D443" xlink:href="#MJX-18-TEX-I-1D443"></use></g></g><g data-mml-node="mi" transform="translate(21363.7,0)"><use data-c="394" xlink:href="#MJX-18-TEX-N-394"></use></g><g data-mml-node="mi" transform="translate(22196.7,0)"><use data-c="1D461" xlink:href="#MJX-18-TEX-I-1D461"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>E</mi><mo>=</mo><mfrac><mrow><mi>m</mi><mi>n</mi><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><mrow><mi>m</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mi>n</mi><mrow><mi>m</mi><mo>+</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac><msub><mi>S</mi><mi>p</mi></msub><mi>m</mi></mfrac><mo>=</mo><msub><mi>T</mi><mi>P</mi></msub><mi mathvariant="normal">Δ</mi><mi>t</mi></math></mjx-assistive-mml></mjx-container></div></div><p><img src="./image/ch08_02_04.svg" style="display:block; margin:0 auto;"></p></li></ol><p><span>  </span></p><h2 id='34-流水线中的多发技术'><span>3.4 流水线中的多发技术</span></h2><p><span>为了进一步发展流水线，可以采用:</span></p><ul><li><span>好的指令调度算法</span></li><li><span>重新组织指令执行顺序</span></li><li><span>降低相关带来的干扰</span></li><li><span>优化编译</span></li></ul><p><span>此外，还可以开发流水线中的多发级数，设法在一个时钟周期(机器主频的倒数)内，产生更多条指令的结果。</span></p><p><span>现假设一条指令有4条，以下是普通流水:</span></p><p><img src="./image/ch08_02_05.svg" style="display:block; margin:0 auto;"></p><p>&nbsp;</p><p><span>下面说明常见的多发技术:</span></p><ol start='' ><li><p><span>超标量技术 (Super Scalar)</span></p><p><img src="./image/ch08_02_06.svg" style="display:block; margin:0 auto;"></p><ul><li><span>它在每个时钟周期内可同时并发多条独立指令，即以并行操作方式将两条或两条以上指令编译并执行。</span></li><li><span>要实现超标量技术，要求处理机中配置多个功能部件和指令译码电路，以及多个寄存器端口和总线，以便能实现同时执行多个操作，还要编译程序决定那几条相邻指令可并行执行</span></li></ul></li><li><p><span>超流水技术 (Super Pipe Lining)</span></p><p><img src="./image/ch08_02_07.svg" style="display:block; margin:0 auto;"></p><ul><li><span>超流水线级数是将一些流水线寄存器插入到流水线段中，好比将流水线在分段。</span></li><li><span>上图中，将原来的时钟周期又分成3段，在原来的时钟周期内，功能部件被使用3次，使流水线以3倍于原来时钟频率的速度运行。</span></li><li><span>硬件不能调整指令的执行顺序，考编译程序优化解决问题。</span></li></ul><p>&nbsp;</p></li><li><p><span>超长指令技术 (VLIW)</span></p><p><img src="./image/ch08_02_08.svg" style="display:block; margin:0 auto;"></p><ul><li><span>超长指令字技术采用多条指令在多个处理部件中并行处理的体系结构，在一个时钟周期内能流出多条指令</span></li><li><span>超长字指令是由编译程序在编译时挖掘出指令间潜在的并行性后，把多条能并行操作的指令组合成一条具有多个操作码字段的超长指令(指令字长可达几百位)</span></li><li><span>由这个超长指令控制VILW机中多个独立工作的功能部件，由每一个操作码字段控制一个功能部件，相当于同时执行多条指令</span></li><li><span>有较高的并行处理能力，但对优化器的要求高、对Cache容量要求也大</span></li></ul><p>&nbsp;</p><p>&nbsp;</p></li></ol><h2 id='35--流水线结构'><span>3.5  流水线结构</span></h2><h3 id='351-指令流水线结构'><span>3.5.1 指令流水线结构</span></h3><p><span>指令流水线是指将指令的整个执行过程用流水线进行分段处理，典型的指令执行过程分为:</span></p><p><img src="./image/ch08_02_09.svg" style="display:block; margin:0 auto;"></p><h3 id='352-运算流水线'><span>3.5.2 运算流水线</span></h3><p><span>流水线还可以用于部件级，如浮点运算操作流水线:</span></p><p><img src="./image/ch08_02_10.svg" style="display:block; margin:0 auto;"></p><ul><li><span>流水线在相邻两段在执行不同的操作，因此在相邻两段之间必须设置锁存器或寄存器</span></li><li><span>只有当流水线各段工作各段工作饱满时，才能发挥最大作用</span></li></ul><p>&nbsp;</p><h1 id='4-中断系统'><span>4. 中断系统</span></h1><h2 id='41-概述'><span>4.1 概述</span></h2><h3 id='411-引起中断的各种因素'><span>4.1.1 引起中断的各种因素</span></h3><ol start='' ><li><p><span>人为设置的中断</span></p><p><span>这种中断一般称为自愿中断，因为它是在程序中人为设置的，故一旦机器执行效率执行这种人为中断，便自愿停止现行程序而转入中断处理</span></p><p><img src="./image/ch08_03_00.svg" style="display:block; margin:0 auto;"></p><p><span>上图中的&quot;转管指令&quot;可能转至从I/O设备调入一批信息到主存的管理程序，也可能是转至将一批数据送往打印机打印的管理程序。</span></p><p><span>当用户程序执行&quot;转管指令&quot;后，便可中断现行程序，转入管理程序，这种转移完全是自愿的。</span></p></li><li><p><span>程序性事故</span></p><p><span>如定点溢出、浮点溢出、操作码不能识别、除法中出现&quot;非法&quot;等</span></p></li><li><p><span>硬件故障</span></p><p><span>如插件接触不良、通风不良、磁表面损坏、电源掉电等</span></p></li><li><p><span>I/O设备</span></p><p><span>I/O设备启动后，一旦准备就绪，便向CPU发出中断请求。每个I/O设备都能发出中断请求。</span></p></li><li><p><span>外部事件</span></p><p><span>用户通过键盘来中断现行程序属于外部事件中断</span></p></li></ol><p><span>上述各种中断因素除自愿中断是人为的以外，大多数是随机的。</span></p><p><span>将引起中断的各个因素称为中断源，中断源可分为两类</span></p><ul><li><p><span>不可屏蔽中断</span></p><p><span>这类中断CPU不能禁止响应，如电源掉电等</span></p></li><li><p><span>可屏蔽中断</span></p><p><span>CPU可根据该中断源是否被屏蔽来确定是否予以响应。若未被屏蔽则能响应；若已被屏蔽，则CPU不能响应。</span></p></li></ul><h3 id='412-中断系统需解决的问题'><span>4.1.2 中断系统需解决的问题</span></h3><ul><li><span>各中断源如何向CPU提出中断请求</span></li><li><span>当多个中断源同时提出中断请求时，中断系统如何确定优先响应哪个中断源的请求</span></li><li><span>CPU在什么条件、什么时候、什么方式来响应中断</span></li><li><span>CPU响应中断后如何保护现场</span></li><li><span>CPU响应中断后，如何停止原程序的执行而转入中断服务程序</span></li><li><span>中断处理结束后，CPU如何恢复现场，如何返回到原程序的间断处</span></li><li><span>在中断处理过程汇中又出现了了新的中断请求，CPU该如何处理</span></li></ul><p>&nbsp;</p><h2 id='42-中断请求标记和中断判优逻辑'><span>4.2 中断请求标记和中断判优逻辑</span></h2><h3 id='421-中断请求标记'><span>4.2.1 中断请求标记</span></h3><p><span>为了判断是哪个中断源提出的请求，在中断系统中必须设置中断请求标记触发器，简称中断请求触发器，记作INTR。当其状态为“1”时，表示中断源有请求。</span></p><p><span>下图是集中在CPU中断系统内的中断请求标记:</span></p><p><img src="./image/ch08_03_01.svg" style="display:block; margin:0 auto;"></p><p><span>需要注意的是，尽管中断请求标记寄存器是由个中断触发器组成的，但这些触发器既可以集中在CPU的中断系统内，也可以分散到各个中断源中。</span></p><p>&nbsp;</p><h3 id='422-中断判优逻辑'><span>4.2.2 中断判优逻辑</span></h3><p><span>任何一个中断系统，在任一时刻，只能响应一个中断源的请求。但许多中断源提出的请求都是随机的，当某一时刻有多个中断源提出中断请求时，中断系统必须按其有限顺序予以响应，称为中断判优。</span></p><p><span>各中断源的优先顺数是根据该中断源若得不到及时响应，致使机器工作出错的严重程度而确定的。如:电源掉电对计算机工作影响程度最大，优先级最高；&quot;定点溢出&quot;对机器正常工作影响也很大，若不及时响应，将使计算机一切运行无效。</span></p><p><span>中断判优可由如下实现:</span></p><ol start='' ><li><p><span>硬件排队</span></p><p><span>硬件排队分为两种:</span></p><ul><li><p><span>链式排队器</span></p><p><img src="./image/ch05_04_01.svg" style="display:block; margin:0 auto;"></p><p><span>对应中断请求触发器分散在各个接口电路，每个接口电路有设有一个非门和一个与非分门</span></p></li><li><p><span>排队器设在CPU内</span></p><p><img src="./image/ch08_03_02.svg" style="display:block; margin:0 auto;"></p><p><span>当最高优先级的中断源有请求时 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="10.7ex" height="1.902ex" role="img" focusable="false" viewBox="0 -683 4729.5 840.8" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.357ex;"><defs><path id="MJX-22-TEX-N-49" d="M328 0Q307 3 180 3T32 0H21V46H43Q92 46 106 49T126 60Q128 63 128 342Q128 620 126 623Q122 628 118 630T96 635T43 637H21V683H32Q53 680 180 680T328 683H339V637H317Q268 637 254 634T234 623Q232 620 232 342Q232 63 234 60Q238 55 242 53T264 48T317 46H339V0H328Z"></path><path id="MJX-22-TEX-N-4E" d="M42 46Q74 48 94 56T118 69T128 86V634H124Q114 637 52 637H25V683H232L235 680Q237 679 322 554T493 303L578 178V598Q572 608 568 613T544 627T492 637H475V683H483Q498 680 600 680Q706 680 715 683H724V637H707Q634 633 622 598L621 302V6L614 0H600Q585 0 582 3T481 150T282 443T171 605V345L172 86Q183 50 257 46H274V0H265Q250 3 150 3Q48 3 33 0H25V46H42Z"></path><path id="MJX-22-TEX-N-54" d="M36 443Q37 448 46 558T55 671V677H666V671Q667 666 676 556T685 443V437H645V443Q645 445 642 478T631 544T610 593Q593 614 555 625Q534 630 478 630H451H443Q417 630 414 618Q413 616 413 339V63Q420 53 439 50T528 46H558V0H545L361 3Q186 1 177 0H164V46H194Q264 46 283 49T309 63V339V550Q309 620 304 625T271 630H244H224Q154 630 119 601Q101 585 93 554T81 486T76 443V437H36V443Z"></path><path id="MJX-22-TEX-N-52" d="M130 622Q123 629 119 631T103 634T60 637H27V683H202H236H300Q376 683 417 677T500 648Q595 600 609 517Q610 512 610 501Q610 468 594 439T556 392T511 361T472 343L456 338Q459 335 467 332Q497 316 516 298T545 254T559 211T568 155T578 94Q588 46 602 31T640 16H645Q660 16 674 32T692 87Q692 98 696 101T712 105T728 103T732 90Q732 59 716 27T672 -16Q656 -22 630 -22Q481 -16 458 90Q456 101 456 163T449 246Q430 304 373 320L363 322L297 323H231V192L232 61Q238 51 249 49T301 46H334V0H323Q302 3 181 3Q59 3 38 0H27V46H60Q102 47 111 49T130 61V622ZM491 499V509Q491 527 490 539T481 570T462 601T424 623T362 636Q360 636 340 636T304 637H283Q238 637 234 628Q231 624 231 492V360H289Q390 360 434 378T489 456Q491 467 491 499Z"></path><path id="MJX-22-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-22-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-22-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mtext"><use data-c="49" xlink:href="#MJX-22-TEX-N-49"></use><use data-c="4E" xlink:href="#MJX-22-TEX-N-4E" transform="translate(361,0)"></use><use data-c="54" xlink:href="#MJX-22-TEX-N-54" transform="translate(1111,0)"></use><use data-c="52" xlink:href="#MJX-22-TEX-N-52" transform="translate(1833,0)"></use></g><g data-mml-node="mi" transform="translate(2602,-150) scale(0.707)"><use data-c="1D456" xlink:href="#MJX-22-TEX-I-1D456"></use></g></g><g data-mml-node="mo" transform="translate(3173.7,0)"><use data-c="3D" xlink:href="#MJX-22-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(4229.5,0)"><use data-c="31" xlink:href="#MJX-22-TEX-N-31"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mtext>INTR</mtext><mi>i</mi></msub><mo>=</mo><mn>1</mn></math></mjx-assistive-mml></mjx-container><script type="math/tex">\text{INTR}_i=1</script><span> ,就可以封住比它级别低的中断源的请求。</span></p></li></ul></li><li><p><span>软件排队请求</span></p><p><span>通过编写查询程序实现</span></p><p><img src="./image/ch08_03_03.svg" style="display:block; margin:0 auto;"></p></li></ol><h2 id='43-中断服务程序入口地址的寻找'><span>4.3 中断服务程序入口地址的寻找</span></h2><p><span>通常由两种方法寻找入口地址:</span></p><ol start='' ><li><p><span>硬件向量法</span></p><ul><li><p><span>利用硬件产生向量地址，再由向量地址找到中断服务程序的入口。</span></p></li><li><p><span>向量地址由中断向量地址形成部件产生，这个电路可以分散在各个接口电路中，也可设在CPU内。</span></p></li><li><p><span>由向量地址寻找中断服务程序入口两种方法</span></p><ul><li><p><span>在向量地址内存放一条无条件转移指令，CPU响应中断时，只要将向量地址送至PC，便可无条件转向程序入口地址。</span></p></li><li><p><span>设置向量地址表，该表设在存储器内，存储单元地址为向量地址，存储单元的内容为入口地址。</span></p><p><img src="./image/ch08_03_04.svg" style="display:block; margin:0 auto;"></p></li></ul></li></ul><p>&nbsp;</p></li><li><p><span>软件查询方法</span></p><p><span>用软件查找中断服务程序入口，至于各中断源对应的入口地址，则由程序员(或系统)事先确定。</span></p><p><span>这种方法不涉及硬设备，但查询时间较长。</span></p></li></ol><h2 id='44-中断响应'><span>4.4 中断响应</span></h2><h3 id='441-响应中断的条件'><span>4.4.1 响应中断的条件</span></h3><p><span>当EINT=1，且有中断请求(即中断请求标记触发器INTR=1)时，CPU可以响应中断。</span></p><h3 id='442-响应中断的时间'><span>4.4.2 响应中断的时间</span></h3><p><span>CPU总是在指令执行周期结束后，响应任何中断源的请求。</span></p><p><span>在指令执行周期结束后，若有中断，CPU则进入中断周期;若无中断，则进入下一条指令的取值周期。</span></p><p><img src="./image/ch08_03_05.svg" style="display:block; margin:0 auto;"></p><p><span>之所以CPU在指令的执行周期后进入中断周期，是因为CPU在执行周期结束时刻同一向所有中断源发出中断查询指令，只有此时，CPU发出中断查询信号到触发器的时钟端，才能将 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="6.552ex" height="1.902ex" role="img" focusable="false" viewBox="0 -683 2896 840.8" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.357ex;"><defs><path id="MJX-23-TEX-N-49" d="M328 0Q307 3 180 3T32 0H21V46H43Q92 46 106 49T126 60Q128 63 128 342Q128 620 126 623Q122 628 118 630T96 635T43 637H21V683H32Q53 680 180 680T328 683H339V637H317Q268 637 254 634T234 623Q232 620 232 342Q232 63 234 60Q238 55 242 53T264 48T317 46H339V0H328Z"></path><path id="MJX-23-TEX-N-4E" d="M42 46Q74 48 94 56T118 69T128 86V634H124Q114 637 52 637H25V683H232L235 680Q237 679 322 554T493 303L578 178V598Q572 608 568 613T544 627T492 637H475V683H483Q498 680 600 680Q706 680 715 683H724V637H707Q634 633 622 598L621 302V6L614 0H600Q585 0 582 3T481 150T282 443T171 605V345L172 86Q183 50 257 46H274V0H265Q250 3 150 3Q48 3 33 0H25V46H42Z"></path><path id="MJX-23-TEX-N-54" d="M36 443Q37 448 46 558T55 671V677H666V671Q667 666 676 556T685 443V437H645V443Q645 445 642 478T631 544T610 593Q593 614 555 625Q534 630 478 630H451H443Q417 630 414 618Q413 616 413 339V63Q420 53 439 50T528 46H558V0H545L361 3Q186 1 177 0H164V46H194Q264 46 283 49T309 63V339V550Q309 620 304 625T271 630H244H224Q154 630 119 601Q101 585 93 554T81 486T76 443V437H36V443Z"></path><path id="MJX-23-TEX-N-52" d="M130 622Q123 629 119 631T103 634T60 637H27V683H202H236H300Q376 683 417 677T500 648Q595 600 609 517Q610 512 610 501Q610 468 594 439T556 392T511 361T472 343L456 338Q459 335 467 332Q497 316 516 298T545 254T559 211T568 155T578 94Q588 46 602 31T640 16H645Q660 16 674 32T692 87Q692 98 696 101T712 105T728 103T732 90Q732 59 716 27T672 -16Q656 -22 630 -22Q481 -16 458 90Q456 101 456 163T449 246Q430 304 373 320L363 322L297 323H231V192L232 61Q238 51 249 49T301 46H334V0H323Q302 3 181 3Q59 3 38 0H27V46H60Q102 47 111 49T130 61V622ZM491 499V509Q491 527 490 539T481 570T462 601T424 623T362 636Q360 636 340 636T304 637H283Q238 637 234 628Q231 624 231 492V360H289Q390 360 434 378T489 456Q491 467 491 499Z"></path><path id="MJX-23-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mtext"><use data-c="49" xlink:href="#MJX-23-TEX-N-49"></use><use data-c="4E" xlink:href="#MJX-23-TEX-N-4E" transform="translate(361,0)"></use><use data-c="54" xlink:href="#MJX-23-TEX-N-54" transform="translate(1111,0)"></use><use data-c="52" xlink:href="#MJX-23-TEX-N-52" transform="translate(1833,0)"></use></g><g data-mml-node="mi" transform="translate(2602,-150) scale(0.707)"><use data-c="1D456" xlink:href="#MJX-23-TEX-I-1D456"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mtext>INTR</mtext><mi>i</mi></msub></math></mjx-assistive-mml></mjx-container><script type="math/tex">\text{INTR}_i</script><span> 置 &quot;1&quot;.</span></p><p><span>在某些计算机中，有些指令执行时间很长，可在指令执行过程中设置若干个查询断点，CPU在每个查询断点时刻均发出中断信号，以便发现有中断请求便可及时响应。</span></p><p>&nbsp;</p><h3 id='443-中断隐指令'><span>4.4.3 中断隐指令</span></h3><p><span>CPU响应中断后，即进入中断周期，在中断周期内，CPU要自动完成一系列操作:</span></p><ol start='' ><li><p><span>保护程序断点</span></p><p><span>将当前程序计数器PC的内容(程序断点)保存到存储器中。可以保存到存储器的特定单元(如0号地址)内，也可存入堆栈。</span></p></li><li><p><span>寻找中断服务程序的入口地址</span></p><p><span>有两种方法:</span></p><ul><li><span>在中断周期内，将向量地址送至PC(对应硬件向量法),使CPU执行下一条无条件转移指令，转至中断服务程序的入口地址</span></li><li><span>在中断周期内，将软件查询入口地址的程序(又称中断识别程序)首地址送至PC，是CPU执行中断识别程序，找到入口地址(对应软件查询法)</span></li></ul></li><li><p><span>关中断</span></p><p><span>为了确保CPU响应后所需做的一些列操作不至于又收到新的中断请求的干扰，在中断周期内必须自动关中断，以禁止CPU再次响应新的中断请求。</span></p><p><img src="./image/ch08_03_06.svg" style="display:block; margin:0 auto;"></p><p><span>上图中:</span></p><ul><li><span>允许中断触发器EINT和中断触发器INT选用标准的S-R锁存器</span></li><li><span>当进入中断周期时，INT为&quot;1&quot;状态，触发器原端输出有一个正跳变，进过反向后产生一个负跳变，使EINT置&quot;0&quot;，即关中断</span></li></ul><p>&nbsp;</p></li></ol><p><span>上述保护断点、寻找入口地址和关中断这些操作都是在中断周期内由一条中断隐指令完成的。</span></p><p><span>所谓中断隐指令，即在机器指令系统中没有的指令，它是CPU在中断周期内由硬件自动完成的一条指令。</span></p><p>&nbsp;</p><h2 id='45-保护现场和恢复现场'><span>4.5 保护现场和恢复现场</span></h2><p><span>保护现场应包括程序断点保护和保护CPU内部各寄存器内容的现场两个方面。程序断点的现场保护由中断隐指完成，各寄存器内的现场保护可在中断服务程序中由用户(或系统)用机器指令编程实现。</span></p><p><span>恢复现场是指在中断返回前，必须将寄存器的内容恢复到中断处理前的转台，这部分工作由中断服务程序完成。</span></p><p>&nbsp;</p><p>&nbsp;</p><h2 id='46-中断屏蔽技术'><span>4.6 中断屏蔽技术</span></h2><h3 id='461-多重中断的概念'><span>4.6.1 多重中断的概念</span></h3><p><span>当CPU正在执行某个中断服务程序时，另一个中断源又提出了新的中断请求，而CPU又响应了这个新的请求，暂时停止正在运行的服务程序，转去执行新的中断服务程序，这称为多重中断，又称嵌套中断。</span></p><p><img src="./image/ch08_03_07.svg" style="display:block; margin:0 auto;"></p><p><span>如果CPU对新的请求不予响应，待执行完当前的服务程序后在响应，记为单重中断。</span></p><p>&nbsp;</p><h3 id='462-实现多重中断的条件'><span>4.6.2 实现多重中断的条件</span></h3><ol start='' ><li><p><span>提前设置&quot;开中断&quot;指令</span></p><p><span>CPU进入中断周期后，由中断隐指令自动将EINT置&quot;0&quot;,即关中断，CPU若想再次响应中断请求，必须开中断，这一响应通常由中断服务程序中的开中断指令实现。</span></p></li><li><p><span>优先级别高的中断源有权中断优先级别低的中断源</span></p><p><span>例如，有A、B、C、D4个中断源，其优先级 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="17.565ex" height="1.67ex" role="img" focusable="false" viewBox="0 -716 7763.7 738" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.05ex;"><defs><path id="MJX-27-TEX-I-1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path><path id="MJX-27-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path><path id="MJX-27-TEX-I-1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path><path id="MJX-27-TEX-I-1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path><path id="MJX-27-TEX-I-1D437" d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D434" xlink:href="#MJX-27-TEX-I-1D434"></use></g><g data-mml-node="mo" transform="translate(1027.8,0)"><use data-c="2192" xlink:href="#MJX-27-TEX-N-2192"></use></g><g data-mml-node="mi" transform="translate(2305.6,0)"><use data-c="1D435" xlink:href="#MJX-27-TEX-I-1D435"></use></g><g data-mml-node="mo" transform="translate(3342.3,0)"><use data-c="2192" xlink:href="#MJX-27-TEX-N-2192"></use></g><g data-mml-node="mi" transform="translate(4620.1,0)"><use data-c="1D436" xlink:href="#MJX-27-TEX-I-1D436"></use></g><g data-mml-node="mo" transform="translate(5657.9,0)"><use data-c="2192" xlink:href="#MJX-27-TEX-N-2192"></use></g><g data-mml-node="mi" transform="translate(6935.7,0)"><use data-c="1D437" xlink:href="#MJX-27-TEX-I-1D437"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mo accent="false" stretchy="false">→</mo><mi>B</mi><mo accent="false" stretchy="false">→</mo><mi>C</mi><mo accent="false" stretchy="false">→</mo><mi>D</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">A\to B\to C\to D</script><span> 由高到低，则下面多重中断的处理示意图:</span></p><p><img src="./image/ch08_03_08.svg" style="display:block; margin:0 auto;"></p><p><span>为了保证底级别的中断源不干扰比其级别高的中断源的中断处理过程，可采用屏蔽技术</span></p></li><li><p><span>屏蔽技术</span></p><ul><li><p><span>屏蔽触发器与屏蔽字</span></p><p><img src="./image/ch08_03_09.svg" style="display:block; margin:0 auto;"></p><ul><li><span>当中断源被屏蔽(MASK=1)，此时即使D=1，中断查询信号到来时刻只能将INTR置&quot;0&quot;,CPU接收不到该中断源请求，即它被屏蔽</span></li><li><span>若该中断源未被屏蔽(MASK=0),当设备工作已完成(D=1)时，中断查询信号将INTR置&quot;1&quot;，表示该中断源向CPU发出中断请求，该信号送至排队器进行优先级判断</span></li></ul><p><span>对应每个中断请求触发器就有一个屏蔽触发器，将所有屏蔽触发器组合在一起，便构成一个屏蔽寄存器，屏蔽寄存器的内容称为屏蔽字。</span></p><p><span>屏蔽字与中断源的优先级别是一一对应的：</span></p><figure><table><thead><tr><th style='text-align:center;' ><span>优先级</span></th><th style='text-align:center;' ><span>屏蔽字</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>1111111111111111</span></td></tr><tr><td style='text-align:center;' ><span>2</span></td><td style='text-align:center;' ><span>0111111111111111</span></td></tr><tr><td style='text-align:center;' ><span>3</span></td><td style='text-align:center;' ><span>0011111111111111</span></td></tr><tr><td style='text-align:center;' ><span>4</span></td><td style='text-align:center;' ><span>0001111111111111</span></td></tr><tr><td style='text-align:center;' ><span>5</span></td><td style='text-align:center;' ><span>0000111111111111</span></td></tr><tr><td style='text-align:center;' ><span>6</span></td><td style='text-align:center;' ><span>0000011111111111</span></td></tr><tr><td style='text-align:center;' ><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="0.629ex" height="3.009ex" role="img" focusable="false" viewBox="0 -1300 278 1330" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.068ex;"><defs><path id="MJX-26-TEX-N-22EE" d="M78 30Q78 54 95 72T138 90Q162 90 180 74T199 31Q199 6 182 -12T139 -30T96 -13T78 30ZM78 440Q78 464 95 482T138 500Q162 500 180 484T199 441Q199 416 182 398T139 380T96 397T78 440ZM78 840Q78 864 95 882T138 900Q162 900 180 884T199 841Q199 816 182 798T139 780T96 797T78 840Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mo"><use data-c="22EE" xlink:href="#MJX-26-TEX-N-22EE"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mo>⋮</mo></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\vdots</script></td><td style='text-align:center;' ><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="0.629ex" height="3.009ex" role="img" focusable="false" viewBox="0 -1300 278 1330" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.068ex;"><defs><path id="MJX-26-TEX-N-22EE" d="M78 30Q78 54 95 72T138 90Q162 90 180 74T199 31Q199 6 182 -12T139 -30T96 -13T78 30ZM78 440Q78 464 95 482T138 500Q162 500 180 484T199 441Q199 416 182 398T139 380T96 397T78 440ZM78 840Q78 864 95 882T138 900Q162 900 180 884T199 841Q199 816 182 798T139 780T96 797T78 840Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mo"><use data-c="22EE" xlink:href="#MJX-26-TEX-N-22EE"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mo>⋮</mo></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\vdots</script></td></tr><tr><td style='text-align:center;' ><span>15</span></td><td style='text-align:center;' ><span>0000000000000011</span></td></tr><tr><td style='text-align:center;' ><span>16</span></td><td style='text-align:center;' ><span>0000000000000001</span></td></tr></tbody></table></figure><p><span>在中断服务程序中设置适当的屏蔽字，能起到对优先级别不同的中断源的屏蔽作用。</span></p></li><li><p><span>屏蔽技术可改变优先级</span></p><p><span>优先级包括响应优先级和处理优先级。</span></p><ul><li><span>响应优先级: CPU响应各中断源请求的优先次序，这种顺序往往是硬件线路已设置好的，不便于改动</span></li><li><span>处理优先级:CPU实际对个中断源请求的处理优先顺序</span></li></ul><p><span>采用屏蔽技术后，可以改变CPU处理各中断源的优先等级。</span></p><p><span>例如: 有A、B、C、D这四个中断源,其优先级 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="17.565ex" height="1.67ex" role="img" focusable="false" viewBox="0 -716 7763.7 738" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.05ex;"><defs><path id="MJX-27-TEX-I-1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path><path id="MJX-27-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path><path id="MJX-27-TEX-I-1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path><path id="MJX-27-TEX-I-1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path><path id="MJX-27-TEX-I-1D437" d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D434" xlink:href="#MJX-27-TEX-I-1D434"></use></g><g data-mml-node="mo" transform="translate(1027.8,0)"><use data-c="2192" xlink:href="#MJX-27-TEX-N-2192"></use></g><g data-mml-node="mi" transform="translate(2305.6,0)"><use data-c="1D435" xlink:href="#MJX-27-TEX-I-1D435"></use></g><g data-mml-node="mo" transform="translate(3342.3,0)"><use data-c="2192" xlink:href="#MJX-27-TEX-N-2192"></use></g><g data-mml-node="mi" transform="translate(4620.1,0)"><use data-c="1D436" xlink:href="#MJX-27-TEX-I-1D436"></use></g><g data-mml-node="mo" transform="translate(5657.9,0)"><use data-c="2192" xlink:href="#MJX-27-TEX-N-2192"></use></g><g data-mml-node="mi" transform="translate(6935.7,0)"><use data-c="1D437" xlink:href="#MJX-27-TEX-I-1D437"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mo accent="false" stretchy="false">→</mo><mi>B</mi><mo accent="false" stretchy="false">→</mo><mi>C</mi><mo accent="false" stretchy="false">→</mo><mi>D</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">A\to B\to C\to D</script><span> 由高到低。如果不采取屏蔽技术，则处理次序与响应次序一致:</span></p><p><img src="./image/ch08_03_10.svg" style="display:block; margin:0 auto;"></p><p><span>如果将上述4个中断源处理次序改为 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="17.565ex" height="1.67ex" role="img" focusable="false" viewBox="0 -716 7763.7 738" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.05ex;"><defs><path id="MJX-28-TEX-I-1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path><path id="MJX-28-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path><path id="MJX-28-TEX-I-1D437" d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z"></path><path id="MJX-28-TEX-I-1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path><path id="MJX-28-TEX-I-1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D434" xlink:href="#MJX-28-TEX-I-1D434"></use></g><g data-mml-node="mo" transform="translate(1027.8,0)"><use data-c="2192" xlink:href="#MJX-28-TEX-N-2192"></use></g><g data-mml-node="mi" transform="translate(2305.6,0)"><use data-c="1D437" xlink:href="#MJX-28-TEX-I-1D437"></use></g><g data-mml-node="mo" transform="translate(3411.3,0)"><use data-c="2192" xlink:href="#MJX-28-TEX-N-2192"></use></g><g data-mml-node="mi" transform="translate(4689.1,0)"><use data-c="1D436" xlink:href="#MJX-28-TEX-I-1D436"></use></g><g data-mml-node="mo" transform="translate(5726.9,0)"><use data-c="2192" xlink:href="#MJX-28-TEX-N-2192"></use></g><g data-mml-node="mi" transform="translate(7004.7,0)"><use data-c="1D435" xlink:href="#MJX-28-TEX-I-1D435"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mo accent="false" stretchy="false">→</mo><mi>D</mi><mo accent="false" stretchy="false">→</mo><mi>C</mi><mo accent="false" stretchy="false">→</mo><mi>B</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">A\to D\to C\to B</script><span>  ,则对应的屏蔽字发生变化:</span></p><figure><table><thead><tr><th style='text-align:center;' ><span>中断源</span></th><th style='text-align:center;' ><span>原屏蔽字</span></th><th style='text-align:center;' ><span>新屏蔽字</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>A</span></td><td style='text-align:center;' ><span>1111</span></td><td style='text-align:center;' ><span>1111</span></td></tr><tr><td style='text-align:center;' ><span>B</span></td><td style='text-align:center;' ><span>0111</span></td><td style='text-align:center;' ><span>0100</span></td></tr><tr><td style='text-align:center;' ><span>C</span></td><td style='text-align:center;' ><span>0011</span></td><td style='text-align:center;' ><span>0110</span></td></tr><tr><td style='text-align:center;' ><span>D</span></td><td style='text-align:center;' ><span>0001</span></td><td style='text-align:center;' ><span>0111</span></td></tr></tbody></table></figure><p><span>在同样请求下，CPU执行程序的轨迹为:</span></p><p><img src="./image/ch08_03_11.svg" style="display:block; margin:0 auto;"></p><p><span>采用屏蔽技术后，在中断服务程序需设置新的屏蔽字，流程图如下:</span></p><p><img src="./image/ch08_03_12.svg" style="display:block; margin:0 auto;"></p></li><li><p><span>屏蔽技术的其他应用</span></p><p><span>屏蔽技术还能给程序控制带来更大的灵活性。</span></p></li></ul></li><li><p><span>多重中断的断点保护</span></p><ul><li><span>多重中断时，每次中断出现的断点都要保存起来。</span></li><li><span>中断系统对断点的保存都是在中断周期内由中断隐指令实现的，对用户是透明的。</span></li><li><span>断点可以保存在堆栈中</span></li><li><span>断点也也可以保存在特定的存储单元内，如果约定一律将程序断点保存在主存的0号地址单元内，则中断服务程序中的开中断指令前，先将0地址单元的内容转存至其他地址单元内，才能真正保存每一个断点。</span></li></ul><p>&nbsp;</p><p>&nbsp;</p></li></ol></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
