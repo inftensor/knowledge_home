@@ -351,6 +351,226 @@
 |   |   |   |--ch03_03_05.png
 |   |   |   |--ch03_03_06.png
 |   |   |   |--test.svg
+|   |--01 - Data Structure
+|   |   |--Code
+|   |   |   |--CourceBook
+|   |   |   |   |--0201_SqList
+|   |   |   |   |   |--0201_SqList.vcxproj
+|   |   |   |   |   |--0201_SqList.vcxproj.filters
+|   |   |   |   |   |--0201_SqList.vcxproj.user
+|   |   |   |   |   |--SqList-main.c
+|   |   |   |   |   |--SqList.c
+|   |   |   |   |   |--SqList.h
+|   |   |   |   |   |--x64
+|   |   |   |   |   |   |--Debug
+|   |   |   |   |   |   |   |--0201_SqList.log
+|   |   |   |   |   |   |   |--0201_SqList.tlog
+|   |   |   |   |   |   |   |   |--0201_SqList.lastbuildstate
+|   |   |   |   |   |   |   |   |--CL.command.1.tlog
+|   |   |   |   |   |   |   |   |--unsuccessfulbuild
+|   |   |   |   |   |   |   |--vc142.idb
+|   |   |   |   |   |   |   |--vc142.pdb
+|   |   |   |   |--0202_Union
+|   |   |   |   |   |--0202_Union.vcxproj
+|   |   |   |   |   |--0202_Union.vcxproj.filters
+|   |   |   |   |   |--0202_Union.vcxproj.user
+|   |   |   |   |   |--Sqlist.c
+|   |   |   |   |   |--SqList.h
+|   |   |   |   |   |--Union-main.c
+|   |   |   |   |   |--Union.c
+|   |   |   |   |   |--Union.h
+|   |   |   |   |--0203_MergeList
+|   |   |   |   |   |--0203_MergeList.vcxproj
+|   |   |   |   |   |--0203_MergeList.vcxproj.filters
+|   |   |   |   |   |--0203_MergeList.vcxproj.user
+|   |   |   |   |   |--MergeSqList-main.c
+|   |   |   |   |   |--MergeSqList-main.cpp
+|   |   |   |   |   |--MergeSqList.c
+|   |   |   |   |   |--MergeSqList.h
+|   |   |   |   |   |--SqList.c
+|   |   |   |   |   |--SqList.h
+|   |   |   |   |--0204_LinkList
+|   |   |   |   |   |--0204_LinkList.vcxproj
+|   |   |   |   |   |--0204_LinkList.vcxproj.filters
+|   |   |   |   |   |--0204_LinkList.vcxproj.user
+|   |   |   |   |   |--head.txt
+|   |   |   |   |   |--LinkList-main.c
+|   |   |   |   |   |--LinkList.c
+|   |   |   |   |   |--LinkList.h
+|   |   |   |   |   |--tail.txt
+|   |   |   |   |   |--test.txt
+|   |   |   |   |--0205_MergeLkList
+|   |   |   |   |   |--0205_MergeLkList.vcxproj
+|   |   |   |   |   |--0205_MergeLkList.vcxproj.filters
+|   |   |   |   |   |--0205_MergeLkList.vcxproj.user
+|   |   |   |   |   |--La_Tail.txt
+|   |   |   |   |   |--Lb_Tail.txt
+|   |   |   |   |   |--LinkList.c
+|   |   |   |   |   |--LinkList.h
+|   |   |   |   |   |--LinkLkList.c
+|   |   |   |   |   |--MergeLkList-main.c
+|   |   |   |   |   |--MergeLkList.h
+|   |   |   |   |--0206_SLinkList
+|   |   |   |   |   |--0206_SLinkList.vcxproj
+|   |   |   |   |   |--0206_SLinkList.vcxproj.filters
+|   |   |   |   |   |--0206_SLinkList.vcxproj.user
+|   |   |   |   |   |--SLinkList-main.c
+|   |   |   |   |   |--SLinkList.c
+|   |   |   |   |   |--SLinkList.h
+|   |   |   |   |--0207_Difference
+|   |   |   |   |   |--0207_Difference.vcxproj
+|   |   |   |   |   |--0207_Difference.vcxproj.filters
+|   |   |   |   |   |--0207_Difference.vcxproj.user
+|   |   |   |   |   |--Difference-main.c
+|   |   |   |   |   |--Difference.c
+|   |   |   |   |   |--Difference.h
+|   |   |   |   |   |--SLinkList.c
+|   |   |   |   |   |--SLinkList.h
+|   |   |   |   |--0208_DuLinkList
+|   |   |   |   |   |--0208_DuLinkList.vcxproj
+|   |   |   |   |   |--0208_DuLinkList.vcxproj.filters
+|   |   |   |   |   |--0208_DuLinkList.vcxproj.user
+|   |   |   |   |   |--DuLinkList-main.c
+|   |   |   |   |   |--DuLinkList.c
+|   |   |   |   |   |--DuLinkList.h
+|   |   |   |   |--0209_ElinkList
+|   |   |   |   |   |--ELinkList-main.c
+|   |   |   |   |   |--ELinkList.c
+|   |   |   |   |   |--ELinkList.h
+|   |   |   |   |   |--ElinkList.vcxproj
+|   |   |   |   |   |--ElinkList.vcxproj.filters
+|   |   |   |   |   |--ElinkList.vcxproj.user
+|   |   |   |   |--0210_MergeELinkList
+|   |   |   |   |   |--ELinkList.c
+|   |   |   |   |   |--ELinkList.h
+|   |   |   |   |   |--MergeELinkList-mian.c
+|   |   |   |   |   |--MergeELinkList.c
+|   |   |   |   |   |--MergeELinkList.h
+|   |   |   |   |   |--MergeELinkList.vcxproj
+|   |   |   |   |   |--MergeELinkList.vcxproj.filters
+|   |   |   |   |   |--MergeELinkList.vcxproj.user
+|   |   |   |   |--0211_Polynomial
+|   |   |   |   |   |--0211_Polynomial.vcxproj
+|   |   |   |   |   |--0211_Polynomial.vcxproj.filters
+|   |   |   |   |   |--0211_Polynomial.vcxproj.user
+|   |   |   |   |   |--ELinkList.c
+|   |   |   |   |   |--ELinkList.h
+|   |   |   |   |   |--Pololynomial.h
+|   |   |   |   |   |--Polynomial-main.c
+|   |   |   |   |   |--Polynomial.c
+|   |   |   |   |--0301_SqStack
+|   |   |   |   |   |--0301_SqStack.vcxproj
+|   |   |   |   |   |--0301_SqStack.vcxproj.filters
+|   |   |   |   |   |--0301_SqStack.vcxproj.user
+|   |   |   |   |   |--SqStack-main.c
+|   |   |   |   |   |--SqStack.c
+|   |   |   |   |   |--SqStack.h
+|   |   |   |   |--0302_Conversion
+|   |   |   |   |   |--0302_Conversion.vcxproj
+|   |   |   |   |   |--0302_Conversion.vcxproj.filters
+|   |   |   |   |   |--0302_Conversion.vcxproj.user
+|   |   |   |   |   |--Conversion-main.c
+|   |   |   |   |   |--Conversion.c
+|   |   |   |   |   |--Conversion.h
+|   |   |   |   |   |--SqStack.c
+|   |   |   |   |   |--SqStack.h
+|   |   |   |   |--0303_LineEdit
+|   |   |   |   |   |--0303_LineEdit.vcxproj
+|   |   |   |   |   |--0303_LineEdit.vcxproj.filters
+|   |   |   |   |   |--0303_LineEdit.vcxproj.user
+|   |   |   |   |   |--LineEdit-main.c
+|   |   |   |   |   |--LineEdit.c
+|   |   |   |   |   |--LineEdit.h
+|   |   |   |   |   |--SqStack.c
+|   |   |   |   |   |--SqStack.h
+|   |   |   |   |--0304_Maze
+|   |   |   |   |   |--0304_Maze.vcxproj
+|   |   |   |   |   |--0304_Maze.vcxproj.filters
+|   |   |   |   |   |--0304_Maze.vcxproj.user
+|   |   |   |   |   |--Maze-main.c
+|   |   |   |   |   |--Maze.c
+|   |   |   |   |   |--Maze.h
+|   |   |   |   |   |--SqStack.c
+|   |   |   |   |   |--SqStack.h
+|   |   |   |   |--0305_Expression
+|   |   |   |   |   |--0305_Expression.vcxproj
+|   |   |   |   |   |--0305_Expression.vcxproj.filters
+|   |   |   |   |   |--0305_Expression.vcxproj.user
+|   |   |   |   |   |--Expression-main.c
+|   |   |   |   |   |--Expression.c
+|   |   |   |   |   |--Expression.h
+|   |   |   |   |   |--SqStack.c
+|   |   |   |   |   |--SqStack.h
+|   |   |   |   |--0306_Hanoi
+|   |   |   |   |   |--0306_Hanoi.vcxproj
+|   |   |   |   |   |--0306_Hanoi.vcxproj.filters
+|   |   |   |   |   |--0306_Hanoi.vcxproj.user
+|   |   |   |   |   |--Hanoi-main.c
+|   |   |   |   |   |--Hanoi.c
+|   |   |   |   |   |--Hanoi.h
+|   |   |   |   |--0307_LinkQueue
+|   |   |   |   |   |--0307_LinkQueue.vcxproj
+|   |   |   |   |   |--0307_LinkQueue.vcxproj.filters
+|   |   |   |   |   |--0307_LinkQueue.vcxproj.user
+|   |   |   |   |   |--LinkQueue-main.c
+|   |   |   |   |   |--LinkQueue.c
+|   |   |   |   |   |--LinkQueue.h
+|   |   |   |   |--0308_SqQueue
+|   |   |   |   |   |--0308_SqQueue.vcxproj
+|   |   |   |   |   |--0308_SqQueue.vcxproj.filters
+|   |   |   |   |   |--0308_SqQueue.vcxproj.user
+|   |   |   |   |   |--SqQueue-main.c
+|   |   |   |   |   |--SqQueue.c
+|   |   |   |   |   |--SqQueue.h
+|   |   |   |   |--0401_SString
+|   |   |   |   |   |--0401_SString.vcxproj
+|   |   |   |   |   |--0401_SString.vcxproj.filters
+|   |   |   |   |   |--0401_SString.vcxproj.user
+|   |   |   |   |   |--SString-main.c
+|   |   |   |   |   |--SString.c
+|   |   |   |   |   |--SString.h
+|   |   |   |   |--0402_HString
+|   |   |   |   |   |--0402_HString.vcxproj
+|   |   |   |   |   |--0402_HString.vcxproj.filters
+|   |   |   |   |   |--0402_HString.vcxproj.user
+|   |   |   |   |   |--HSting-main.c
+|   |   |   |   |   |--HString.c
+|   |   |   |   |   |--HString.h
+|   |   |   |   |--0403_LString
+|   |   |   |   |   |--0403_LString.vcxproj
+|   |   |   |   |   |--0403_LString.vcxproj.filters
+|   |   |   |   |   |--0403_LString.vcxproj.user
+|   |   |   |   |   |--LString.c
+|   |   |   |   |   |--LString.h
+|   |   |   |   |--0404_KMP
+|   |   |   |   |   |--0404_KMP.vcxproj
+|   |   |   |   |   |--0404_KMP.vcxproj.filters
+|   |   |   |   |   |--0404_KMP.vcxproj.user
+|   |   |   |   |   |--KMP-main.c
+|   |   |   |   |   |--KMP.c
+|   |   |   |   |   |--KMP.h
+|   |   |   |   |   |--SString.c
+|   |   |   |   |   |--SString.h
+|   |   |   |   |--0405_WordList
+|   |   |   |   |   |--0405_WordList.vcxproj
+|   |   |   |   |   |--0405_WordList.vcxproj.filters
+|   |   |   |   |   |--0405_WordList.vcxproj.user
+|   |   |   |   |   |--ELinkList.c
+|   |   |   |   |   |--ELinkList.h
+|   |   |   |   |   |--HString.c
+|   |   |   |   |   |--HString.h
+|   |   |   |   |   |--WordList.c
+|   |   |   |   |   |--WordList.h
+|   |   |   |   |--CourceBook.sln
+|   |   |   |--image
+|   |   |   |   |--00.png
+|   |   |   |   |--01-16499471437031.png
+|   |   |   |   |--01.png
+|   |   |   |   |--image-20220414224202938.png
+|   |   |   |--ReadMe.md
+|   |   |   |--Status
+|   |   |   |   |--Status.h
+|   |   |--Readme.md
 |--index.py
 |--index.txt
 |--README.md
