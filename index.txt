@@ -64,6 +64,25 @@
 |   |   |   |--ch1_39.png
 |   |   |   |--ch1_40.png
 |   |   |   |--ch1_41.png
+|   |--01 - probability theory and mathematical statistics
+|   |   |--ch01_随机事件及其概率.html
+|   |   |--ch01_随机事件及其概率.md
+|   |   |--ch02_一维随机变量及其分布函数.html
+|   |   |--ch02_一维随机变量及其分布函数.md
+|   |   |--ch03_多维随机变量及其分布.html
+|   |   |--ch03_多维随机变量及其分布.md
+|   |   |--ch04_随机变量的数字特征.html
+|   |   |--ch04_随机变量的数字特征.md
+|   |   |--ch05_极限定理.html
+|   |   |--ch05_极限定理.md
+|   |   |--ch06_数理统计的基本概念.html
+|   |   |--ch06_数理统计的基本概念.md
+|   |   |--ch07_参数估计.html
+|   |   |--ch07_参数估计.md
+|   |   |--ch08_假设检验.html
+|   |   |--ch08_假设检验.md
+|   |   |--ch09_回归分析.html
+|   |   |--ch09_回归分析.md
 |--01 - 408
 |   |--00 - Computer composition pricile
 |   |   |--ch01_计算机系统概述.html
